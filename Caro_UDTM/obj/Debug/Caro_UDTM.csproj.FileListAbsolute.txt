@@ -1,0 +1,40 @@
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojResolveAssemblyReference.cache
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Form1.resources
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\Kisstherain-Yiruma_7x9x.wav
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LANForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MainForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MenuForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Transitions.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojResolveAssemblyReference.cache
+F:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+F:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+F:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\Kisstherain-Yiruma_7x9x.wav
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojResolveAssemblyReference.cache
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LANForm.resources
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MainForm.resources
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MenuForm.resources
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
+G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
