@@ -9,8 +9,8 @@ namespace Caro_UDTM.Components
 {
     class GameConstant
     {
-        public static int ROWS = 20;
-        public static int COLS = 20;
+        public static int ROWS = 21;
+        public static int COLS = 21;
 
         public static int WIN_SCORE = 100000000;
 
@@ -25,6 +25,9 @@ namespace Caro_UDTM.Components
 
         // Light yellow
         public static Color buttonColor = Color.FromArgb(241, 196, 15);
+
+        //
+        public static Color buttonClickColor = Color.FromArgb(213, 244, 255);
 
         public static string backgroundMusic = @".\Resources\Kisstherain-Yiruma_7x9x.wav";
     }

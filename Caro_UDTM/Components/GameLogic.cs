@@ -15,6 +15,7 @@ namespace Caro_UDTM.Components
         public static List<int[]> generateMoves(Board caroBoard)
         {
             List<int[]> posibleMoveList = new List<int[]>();
+            int[,] board = caroBoard.getBoard();
 
             int n = GameConstant.ROWS;
 
@@ -22,13 +23,13 @@ namespace Caro_UDTM.Components
             {
                 for (int j = 0; j < n; ++j)
                 {
-                    if (caroBoard.board[i, j] > 0) continue;
+                    if (board[i, j] > 0) continue;
 
                     if (i > 0)
                     {
                         if (j > 0)
                         {
-                            if (caroBoard.board[i - 1, j - 1] > 0 || caroBoard.board[i, j - 1] > 0)
+                            if (board[i - 1, j - 1] > 0 || board[i, j - 1] > 0)
                             {
                                 int[] move = { i, j };
                                 posibleMoveList.Add(move);
@@ -38,7 +39,7 @@ namespace Caro_UDTM.Components
 
                         if (j < n - 1)
                         {
-                            if (caroBoard.board[i - 1, j + 1] > 0 || caroBoard.board[i, j + 1] > 0)
+                            if (board[i - 1, j + 1] > 0 || board[i, j + 1] > 0)
                             {
                                 int[] move = { i, j };
                                 posibleMoveList.Add(move);
@@ -47,7 +48,7 @@ namespace Caro_UDTM.Components
                         }
 
 
-                        if (caroBoard.board[i - 1, j] > 0)
+                        if (board[i - 1, j] > 0)
                         {
                             int[] move = { i, j };
                             posibleMoveList.Add(move);
@@ -59,7 +60,7 @@ namespace Caro_UDTM.Components
                     {
                         if (j > 0)
                         {
-                            if (caroBoard.board[i + 1, j - 1] > 0 || caroBoard.board[i, j - 1] > 0)
+                            if (board[i + 1, j - 1] > 0 || board[i, j - 1] > 0)
                             {
                                 int[] move = { i, j };
                                 posibleMoveList.Add(move);
@@ -69,7 +70,7 @@ namespace Caro_UDTM.Components
 
                         if (j < n - 1)
                         {
-                            if (caroBoard.board[i + 1, j + 1] > 0 || caroBoard.board[i, j + 1] > 0)
+                            if (board[i + 1, j + 1] > 0 || board[i, j + 1] > 0)
                             {
                                 int[] move = { i, j };
                                 posibleMoveList.Add(move);
@@ -77,7 +78,7 @@ namespace Caro_UDTM.Components
                             }
                         }
 
-                        if (caroBoard.board[i + 1, j] > 0)
+                        if (board[i + 1, j] > 0)
                         {
                             int[] move = { i, j };
                             posibleMoveList.Add(move);
@@ -279,6 +280,7 @@ namespace Caro_UDTM.Components
 
         public static int evaluateHorizontal(Board caroBoard, bool isX, bool playerTurn)
         {
+            int[,] board = caroBoard.getBoard();
             int consecutive = 0;
 
             int block = 2;
@@ -288,9 +290,9 @@ namespace Caro_UDTM.Components
             {
                 for (int j = 0; j < GameConstant.COLS; ++j)
                 {
-                    if (caroBoard.board[i, j] == (isX ? 2 : 1)) consecutive++;
+                    if (board[i, j] == (isX ? 2 : 1)) consecutive++;
 
-                    else if (caroBoard.board[i, j] == 0)
+                    else if (board[i, j] == 0)
                     {
                         if (consecutive > 0)
                         {
@@ -335,6 +337,7 @@ namespace Caro_UDTM.Components
 
         public static int evaluateVertical(Board caroBoard, bool isX, bool playerTurn)
         {
+            int[,] board = caroBoard.getBoard();
             int consecutive = 0;
             int blocks = 2;
             int score = 0;
@@ -343,9 +346,9 @@ namespace Caro_UDTM.Components
             {
                 for (int i = 0; i < GameConstant.ROWS; ++i)
                 {
-                    if (caroBoard.board[i, j] == (isX ? 2 : 1)) consecutive++;
+                    if (board[i, j] == (isX ? 2 : 1)) consecutive++;
 
-                    else if (caroBoard.board[i, j] == 0)
+                    else if (board[i, j] == 0)
                     {
                         if (consecutive > 0)
                         {
@@ -389,6 +392,7 @@ namespace Caro_UDTM.Components
 
         public static int evaluateDiagonal(Board caroBoard, bool isX, bool playerTurn)
         {
+            int[,] board = caroBoard.getBoard();
             int consecutive = 0;
             int blocks = 2;
             int score = 0;
@@ -402,11 +406,11 @@ namespace Caro_UDTM.Components
                 {
                     int j = k - i;
 
-                    if (caroBoard.board[i, j] == (isX ? 2 : 1))
+                    if (board[i, j] == (isX ? 2 : 1))
                     {
                         consecutive++;
                     }
-                    else if (caroBoard.board[i, j] == 0)
+                    else if (board[i, j] == 0)
                     {
                         if (consecutive > 0)
                         {
@@ -451,11 +455,11 @@ namespace Caro_UDTM.Components
                 {
                     int j = i - k;
 
-                    if (caroBoard.board[i, j] == (isX ? 2 : 1))
+                    if (board[i, j] == (isX ? 2 : 1))
                     {
                         consecutive++;
                     }
-                    else if (caroBoard.board[i, j] == 0)
+                    else if (board[i, j] == 0)
                     {
                         if (consecutive > 0)
                         {
@@ -505,13 +509,13 @@ namespace Caro_UDTM.Components
 
             switch (consecutive)
             {
-                case 5: return GameConstant.WIN_SCORE;
-                //if (block < 2) return winGuarantee;
-                //else
-                //{
-                //    if (currentTurn) return 10;
-                //    else return 5;
-                //}
+                case 5:
+                    if (block < 2 ) return GameConstant.WIN_SCORE;
+                    else
+                    {
+                        if (currentTurn) return 10;
+                        else return 5;
+                    }
 
                 case 4:
                     if (currentTurn) return winGuarantee;

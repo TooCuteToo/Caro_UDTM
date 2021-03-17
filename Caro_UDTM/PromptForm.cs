@@ -79,7 +79,7 @@ namespace Caro_UDTM
                 return new object[2] { textBox1.Text, (string) comboBox.SelectedItem };
             }
 
-            return new object[2] { "NGUYEN VAN A", (string) comboBox.SelectedItem };
+            return new object[2] { null, (string) comboBox.SelectedItem };
         }
 
         public object[] showDialog2()
@@ -93,7 +93,7 @@ namespace Caro_UDTM
                 return new object[2] { textBox1.Text, textBox2.Text };
             }
 
-            return new object[2] { "NGUYEN VAN A", "NGUYEN VAN B" };
+            return new object[2] { null, "NGUYEN VAN B" };
         }
     }
 }

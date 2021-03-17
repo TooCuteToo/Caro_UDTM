@@ -38,3 +38,6 @@ G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resour
 G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
 G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
 G:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
+C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb

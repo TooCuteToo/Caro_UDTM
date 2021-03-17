@@ -81,9 +81,9 @@ namespace Caro_UDTM
 
         private void playerFirstBtn_Click(object sender, EventArgs e)
         {
-            Visible = false;
             object[] result = prompt.showDialog();
-            Visible = true;
+
+            if (result[0] == null) return;
 
             string name = (string) result[0];
             string difficulty = (string)result[1];
@@ -96,9 +96,9 @@ namespace Caro_UDTM
 
         private void comFirstBtn_Click(object sender, EventArgs e)
         {
-            Visible = false;
             object[] result = prompt.showDialog();
-            Visible = true;
+
+            if (result[0] == null) return;
 
             string name = (string)result[0];
             string difficulty = (string)result[1];
@@ -114,6 +114,8 @@ namespace Caro_UDTM
             prompt = new PromptForm("NAME INPUT", 2);
             object[] result = prompt.showDialog2();
 
+            if (result[0] == null) return;
+
             MainForm game = new MainForm(2, false);
             Visible = false;
             game.ShowDialog();
@@ -126,6 +128,29 @@ namespace Caro_UDTM
             if (difficulty == "MEDIUM") return 3;
 
             return 4;
+        }
+
+        private void leaderBtn_Click(object sender, EventArgs e)
+        {
+            int iWidth;
+
+            if (leaderBtn.Text == "LEADERBOARD")
+            {
+                iWidth = 700;
+                leaderBtn.Text = "BACK";
+            }
+            else
+            {
+                iWidth = 421;
+                leaderBtn.Text = "LEADERBOARD";
+            }
+
+            Transition.run(this, "Width", iWidth, new TransitionType_EaseInEaseOut(500));
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         

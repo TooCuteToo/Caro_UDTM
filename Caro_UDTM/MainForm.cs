@@ -15,6 +15,8 @@ namespace Caro_UDTM
 {
     public partial class MainForm : Form
     {
+        private Stack<Button> moveStack;
+
         #region Thuộc tính của người
 
         private bool isX;
@@ -145,7 +147,8 @@ namespace Caro_UDTM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            renderBoardLayout();   
+            renderBoardLayout();
+            moveStack = new Stack<Button>();
 
             if (aiStartFirst)
             {
@@ -299,17 +302,6 @@ namespace Caro_UDTM
 
             btn.Click -= btn_click;
 
-            Console.WriteLine("\n\n========= TRANG THAI BAN CO =========");
-            for (int i = 0; i < GameConstant.ROWS; ++i)
-            {
-                for (int j = 0; j < GameConstant.COLS; ++j)
-                {
-                    Console.Write(caroBoard.board[i, j] + "  ");
-                }
-
-                Console.WriteLine();
-            }
-
             Console.WriteLine("\n========= DIEM DANH GIA =========");
             Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
         }
@@ -348,6 +340,16 @@ namespace Caro_UDTM
         {
             TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
             Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
+            btn.BackColor = GameConstant.buttonClickColor;
+
+            //MessageBox.Show(moveStack.Count.ToString());
+
+            if (moveStack.Count > 0)
+            {
+                moveStack.Peek().BackColor = GameConstant.boardColor;
+            }
+
+            moveStack.Push(btn);
 
             if (btn.Image != null) return false;
 
@@ -402,6 +404,46 @@ namespace Caro_UDTM
             foreach (Button btn in listBtn)
             {
                 btn.Click += btn_click;
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (moveStack.Count >= 2)
+            {
+                if (gameType == 1)
+                {
+                    for (int i = 0; i < 2; ++i)
+                    {
+                        Button btn = moveStack.Pop();
+                        btn.BackColor = GameConstant.boardColor;
+                        btn.Click += btn_click;
+                        Point point = (Point)btn.Tag;
+
+                        btn.Image = null;
+
+                        caroBoard.clearMove(point.X, point.Y);
+                        caroBoard.printBoard();
+                    }
+
+                    return;
+                }
+
+                if (gameType == 2)
+                {
+                    Button btn = moveStack.Pop();
+                    btn.BackColor = GameConstant.boardColor;
+                    btn.Click += btn_click;
+                    Point point = (Point)btn.Tag;
+
+                    btn.Image = null;
+
+                    caroBoard.clearMove(point.X, point.Y);
+                    caroBoard.printBoard();
+                    isX = !isX;
+
+                    return;
+                }
             }
         }
     }
