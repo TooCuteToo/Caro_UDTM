@@ -16,6 +16,8 @@ namespace Caro_UDTM.Components
 
         public static Image X_IMG = new Bitmap(Properties.Resources.x, new Size(24 - 7, 24 - 7));
         public static Image O_IMG = new Bitmap(Properties.Resources.o, new Size(24 - 7, 24 - 7));
+        public static Image[] menuImage = { new Bitmap(Properties.Resources.menu_x_icon), new Bitmap(Properties.Resources.menu_o_icon) };
+
 
         // Madison
         public static Color boardColor = Color.FromArgb(44, 62, 80);
@@ -30,5 +32,6 @@ namespace Caro_UDTM.Components
         public static Color buttonClickColor = Color.FromArgb(213, 244, 255);
 
         public static string backgroundMusic = @".\Resources\Kisstherain-Yiruma_7x9x.wav";
+
     }
 }

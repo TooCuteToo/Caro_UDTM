@@ -13,3 +13,4 @@ C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.StartForm.resou
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.csproj.GenerateResource.Cache
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.exe
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.pdb
+C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.HelpForm.resources

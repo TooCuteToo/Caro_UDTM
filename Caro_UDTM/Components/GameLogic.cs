@@ -265,10 +265,15 @@ namespace Caro_UDTM.Components
         public static int getScore(Board caroBoard, bool isX, bool isXTurn)
         {
             int horizontalScore = evaluateHorizontal(caroBoard, isX, isXTurn);
-            int verticalScore = evaluateVertical(caroBoard, isX, isXTurn);
-            int diagonalScore = evaluateDiagonal(caroBoard, isX, isXTurn);
+            //Console.WriteLine("DIEM HANG NGANG NE: " + horizontalScore);
 
-            //Console.WriteLine((horizontalScore + verticalScore + diagonalScore).ToString());
+            int verticalScore = evaluateVertical(caroBoard, isX, isXTurn);
+            //Console.WriteLine("DIEM HANG DOC NE: " + verticalScore);
+
+            int diagonalScore = evaluateDiagonal(caroBoard, isX, isXTurn);
+            //Console.WriteLine("DIEM HANG CHEO NE: " + diagonalScore);
+
+            Console.WriteLine((horizontalScore + verticalScore + diagonalScore).ToString());
 
             return horizontalScore + verticalScore + diagonalScore;
 
@@ -321,6 +326,7 @@ namespace Caro_UDTM.Components
 
                 if (consecutive > 0)
                 {
+                    if (consecutive == 4) MessageBox.Show("heree");
                     score += getConsecutiveSetScore(consecutive, block, isX == playerTurn);
                 }
 
@@ -440,7 +446,6 @@ namespace Caro_UDTM.Components
                 if (consecutive > 0)
                 {
                     score += getConsecutiveSetScore(consecutive, blocks, isX == playerTurn);
-
                 }
                 consecutive = 0;
                 blocks = 2;

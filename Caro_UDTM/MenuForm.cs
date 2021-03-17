@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caro_UDTM.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,15 @@ namespace Caro_UDTM
 {
     public partial class MenuForm : Form
     {
-        private String userName;
-        PromptForm prompt;
+        private PromptForm prompt;
 
         public MenuForm()
         {
             InitializeComponent();
+            pictureBox1.Image = GameConstant.menuImage[new Random().Next(0, 2)];
+
+            timer1.Interval = 1000;
+            timer1.Start();
         }
 
         private void startGameBtn_Click(object sender, EventArgs e)
@@ -132,20 +136,20 @@ namespace Caro_UDTM
 
         private void leaderBtn_Click(object sender, EventArgs e)
         {
-            int iWidth;
+            //int iWidth;
 
-            if (leaderBtn.Text == "LEADERBOARD")
-            {
-                iWidth = 700;
-                leaderBtn.Text = "BACK";
-            }
-            else
-            {
-                iWidth = 421;
-                leaderBtn.Text = "LEADERBOARD";
-            }
+            //if (leaderBtn.Text == "LEADERBOARD")
+            //{
+            //    iWidth = 700;
+            //    leaderBtn.Text = "BACK";
+            //}
+            //else
+            //{
+            //    iWidth = 421;
+            //    leaderBtn.Text = "LEADERBOARD";
+            //}
 
-            Transition.run(this, "Width", iWidth, new TransitionType_EaseInEaseOut(500));
+            //Transition.run(this, "Width", iWidth, new TransitionType_EaseInEaseOut(500));
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -153,6 +157,18 @@ namespace Caro_UDTM
             Close();
         }
 
-        
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Image destination = (pictureBox1.Image == GameConstant.menuImage[0]) ? GameConstant.menuImage[1] : GameConstant.menuImage[0];
+            pictureBox1.Image = destination;
+        }
+
+        private void helpBtn_Click(object sender, EventArgs e)
+        {
+            HelpForm help = new HelpForm();
+            Visible = false;
+            help.ShowDialog();
+            Visible = true;
+        }
     }
 }

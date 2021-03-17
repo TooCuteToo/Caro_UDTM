@@ -302,6 +302,8 @@ namespace Caro_UDTM
 
             btn.Click -= btn_click;
 
+            caroBoard.printBoard();
+
             Console.WriteLine("\n========= DIEM DANH GIA =========");
             Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
         }
