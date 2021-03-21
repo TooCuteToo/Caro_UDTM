@@ -60,7 +60,7 @@ namespace Caro_UDTM
         private void onePlayerBtn_Click(object sender, EventArgs e)
         {
             Transition transition = new Transition(new TransitionType_EaseInEaseOut(500));
-            prompt = new PromptForm("NAME INPUT", 1);
+            prompt = new PromptForm("NAME INPUT", GameMode.OnePlayer);
 
             Control controlOn, controlOff;
 
@@ -92,7 +92,7 @@ namespace Caro_UDTM
             string name = (string) result[0];
             string difficulty = (string)result[1];
 
-            MainForm game = new MainForm(1, name, getDifficulty(difficulty), true);
+            MainForm game = new MainForm(GameMode.OnePlayer, name, getDifficulty(difficulty), true);
             Visible = false;
             game.ShowDialog();
             Visible = true;
@@ -107,7 +107,7 @@ namespace Caro_UDTM
             string name = (string)result[0];
             string difficulty = (string)result[1];
 
-            MainForm game = new MainForm(1, name, getDifficulty(difficulty), false);
+            MainForm game = new MainForm(GameMode.OnePlayer, name, getDifficulty(difficulty), false);
             Visible = false;
             game.ShowDialog();
             Visible = true;
@@ -115,12 +115,12 @@ namespace Caro_UDTM
 
         private void twoPlayerBtn_Click(object sender, EventArgs e)
         {
-            prompt = new PromptForm("NAME INPUT", 2);
+            prompt = new PromptForm("NAME INPUT", GameMode.TwoPlayer);
             object[] result = prompt.showDialog2();
 
             if (result[0] == null) return;
 
-            MainForm game = new MainForm(2, false);
+            MainForm game = new MainForm(GameMode.TwoPlayer, result[0].ToString(), result[1].ToString());
             Visible = false;
             game.ShowDialog();
             Visible = true;
@@ -168,6 +168,23 @@ namespace Caro_UDTM
             HelpForm help = new HelpForm();
             Visible = false;
             help.ShowDialog();
+            Visible = true;
+        }
+
+        private void multiPlayerBtn_Click(object sender, EventArgs e)
+        {
+            prompt = new PromptForm("CARO", GameMode.LAN);
+
+            Visible = false;
+            object[] result = prompt.showLanDialog();
+            Visible = true;
+
+            if (result[0] == null) return;
+
+            MainForm game = new MainForm(GameMode.LAN, result[0].ToString(), result[1].ToString());
+
+            Visible = false;
+            game.ShowDialog();
             Visible = true;
         }
     }

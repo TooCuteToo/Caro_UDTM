@@ -16,12 +16,13 @@ namespace Caro_UDTM
     public partial class MainForm : Form
     {
         private Stack<Button> moveStack;
+        private List<Button> listBtn;
 
         #region Thuộc tính của người
 
         private bool isX;
         private bool isXTurn;
-        private int gameType;
+        private GameMode gameType;
         private string userName;
 
         #endregion
@@ -41,22 +42,24 @@ namespace Caro_UDTM
         private TcpListener server = null;
         private TcpClient client;
         private Socket socket;
+        private int isHost;
 
         #endregion
 
         #region Hàm dựng 1 Player
 
-        public MainForm(int gameType, string userName, int depth, bool isPlayerFirst)
+        public MainForm(GameMode gameType, string userName, int depth, bool isPlayerFirst)
         {
             InitializeComponent();
             caroBoard = new Board();
+
             this.gameType = gameType;
             this.userName = userName;
             this.depth = depth;
 
             switch (gameType)
             {
-                case 1:
+                case GameMode.OnePlayer:
                     aiStartFirst = !isPlayerFirst;
                     isX = false;
                     isXTurn = false;
@@ -71,58 +74,68 @@ namespace Caro_UDTM
 
                     isPlayerTurn = false;
                     break;
-
-                case 2:
-                    isX = false;
-                    isXTurn = false;
-                    break;
             }
         }
 
         #endregion
 
-        #region Hàm dựng 2 Players hoặc LAN
+        #region Hàm dựng 2 Players
 
-        public MainForm(int gameType, bool isHost, string ip = null)
+        public MainForm(GameMode gameType, string playerOneName, string playerTwoName)
         {
             InitializeComponent();
 
             caroBoard = new Board();
             this.gameType = gameType;
 
+            playerOneNameTxt.Text = playerOneName;
+            playerTwoNameTxt.Text = playerTwoName;
+        }
+
+        #endregion
+
+        #region Hàm dựng LAN
+
+        public MainForm(GameMode gameType, bool isHost, string ipAddress = null)
+        {
+            InitializeComponent();
+
+            listBtn = new List<Button>();
+            caroBoard = new Board();
+            this.gameType = gameType;
+            this.isHost = isHost ? 0 : 1;
 
             messageReceiver.DoWork += messageReceiver_DoWork;
             CheckForIllegalCrossThreadCalls = false;
 
-            //if (isHost)
-            //{
-            //    isX = false;
-            //    isXTurn = false;
-            //    server = new TcpListener(System.Net.IPAddress.Any, 5732);
-            //    server.Start();
-            //    socket = server.AcceptSocket();
-            //}
-            //else
-            //{
-            //    isX = true;
-            //    isXTurn = true;
+            isX = false;
+            isX = false;
 
-            //    try
-            //    {
-            //        client = new TcpClient(ip, 5732);
-            //        socket = client.Client;
-            //        messageReceiver.RunWorkerAsync();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //        return;
-            //    }
+            if (isHost)
+            {
+                server = new TcpListener(System.Net.IPAddress.Any, 5732);
+                server.Start();
 
-            //}
+                socket = server.AcceptSocket();
+            }
+            else
+            {
+                try
+                {
+                    client = new TcpClient(ipAddress, 5732);
+                    socket = client.Client;
+                    messageReceiver.RunWorkerAsync();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
+            }
         }
 
-        #endregion
+        #endregion 
 
         #region Khu vưc dành cho LAN
 
@@ -138,12 +151,14 @@ namespace Caro_UDTM
 
         private void receiveMove()
         {
-            byte[] buffer = new byte[1];
+            byte[] buffer = new byte[3];
             socket.Receive(buffer);
-            playMove(new Point(buffer[0] / GameConstant.ROWS, buffer[0] % GameConstant.ROWS));     
+            playMove(new Point(buffer[0], buffer[1]), buffer[2]);
         }
 
         #endregion
+
+        #region Máy đi nước đầu tiên
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -158,14 +173,17 @@ namespace Caro_UDTM
                 playMove(new Point(midMove, midMove));
             }
 
-            controlMusic(1);
+            //controlMusic(1);
         }
+
+        #endregion
 
         #region Hàm thực hiện vẽ giao diện bàn cờ
 
         private void renderBoardLayout()
         {
-            if (gameType == 1)
+            listBtn = new List<Button>();
+            if (gameType == GameMode.OnePlayer)
             {
                 playerOneNameTxt.Text = userName.ToUpper();
             }
@@ -184,7 +202,9 @@ namespace Caro_UDTM
 
                 for (int j = 0; j < GameConstant.COLS; ++j)
                 {
-                    tableLayout.Controls.Add(renderChessBtn(i, j), j, i);
+                    Button btn = renderChessBtn(i, j);
+                    tableLayout.Controls.Add(btn, j, i);
+                    listBtn.Add(btn);
                 }
             }
 
@@ -238,25 +258,27 @@ namespace Caro_UDTM
         {
             Button btn = (Button)sender;
 
-            //if (gameType == 2)
-            //{
-            //    try
-            //    {
-            //        Point temp = (Point)btn.Tag;
-            //        byte[] buffer = { (byte)(temp.X * GameConstant.ROWS + temp.Y) };
-            //        socket.Send(buffer);
-            //        playMove(new Point(buffer[0] / GameConstant.ROWS, buffer[0] % GameConstant.ROWS));
-            //        freezeBoard();
-            //        messageReceiver.RunWorkerAsync();
-            //        btn.Click -= btn_click;
-            //        return;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //        return;
-            //    }
-            //}
+            if (gameType == GameMode.LAN)
+            {
+                try
+                {
+                    Point coordition = (Point)btn.Tag;
+                    byte[] buffer = { (byte)coordition.X, (byte)coordition.Y, (byte)isHost };
+
+                    playMove(coordition, isHost);
+                    socket.Send(buffer);
+
+                    messageReceiver.RunWorkerAsync();
+
+                    btn.Click -= btn_click;
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
 
             if (!playMove((Point)btn.Tag))
             {
@@ -281,7 +303,7 @@ namespace Caro_UDTM
                 }
             }
 
-            if (gameType < 2)
+            if (gameType == GameMode.OnePlayer)
             {
                 TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
                 int[] bestMove = GameLogic.calculateNextMove(depth, caroBoard);
@@ -302,10 +324,10 @@ namespace Caro_UDTM
 
             btn.Click -= btn_click;
 
-            caroBoard.printBoard();
+            //caroBoard.printBoard();
 
-            Console.WriteLine("\n========= DIEM DANH GIA =========");
-            Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
+            //Console.WriteLine("\n========= DIEM DANH GIA =========");
+            //Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -336,15 +358,13 @@ namespace Caro_UDTM
 
         #endregion
 
-        #region Hàm thực hiện đánh quân cờ
+        #region Hàm thực hiện đánh quân cờ (1 Player vs 2 Players)
 
         private bool playMove(Point point)
         {
             TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
             Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
             btn.BackColor = GameConstant.buttonClickColor;
-
-            //MessageBox.Show(moveStack.Count.ToString());
 
             if (moveStack.Count > 0)
             {
@@ -376,6 +396,42 @@ namespace Caro_UDTM
 
         #endregion
 
+        #region Hàm thực hiện đánh quân cờ (1 Player vs 2 Players)
+
+        private bool playMove(Point point, int isHost)
+        {
+            TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
+            Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
+            btn.BackColor = GameConstant.buttonClickColor;
+
+            if (moveStack.Count > 0)
+            {
+                moveStack.Peek().BackColor = GameConstant.boardColor;
+            }
+
+            moveStack.Push(btn);
+
+            if (btn.Image != null) return false;
+
+            if (isHost == 1)
+            {
+                btn.Image = GameConstant.X_IMG;
+                caroBoard.addMove(point.X, point.Y, true);
+            }
+
+            else
+            {
+                btn.Image = GameConstant.O_IMG;
+                caroBoard.addMove(point.X, point.Y, false);
+            }
+
+            btn.Click -= btn_click;
+
+            return true;
+        }
+
+        #endregion
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             messageReceiver.WorkerSupportsCancellation = true;
@@ -391,29 +447,34 @@ namespace Caro_UDTM
 
         private void freezeBoard()
         {
-            List<Button> listBtn = mainTablePanel.Controls[1].Controls.OfType<Button>().ToList();
-
             foreach (Button btn in listBtn)
             {
-                btn.Click -= btn_click;
+                if (btn.Image == null) btn.MouseHover += btn_MouseHover;
             }
+        }
+
+        private void btn_MouseHover(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.Enabled = false;
         }
 
         private void unfreezeBoard()
         {
-            List<Button> listBtn = mainTablePanel.Controls[1].Controls.OfType<Button>().Where(item => item.Image == null).ToList();
-
             foreach (Button btn in listBtn)
             {
-                btn.Click += btn_click;
+                btn.MouseHover -= btn_MouseHover;
+                btn.Enabled = true;
             }
         }
+
+        #region Chức năng undo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (moveStack.Count >= 2)
             {
-                if (gameType == 1)
+                if (gameType == GameMode.OnePlayer)
                 {
                     for (int i = 0; i < 2; ++i)
                     {
@@ -431,7 +492,7 @@ namespace Caro_UDTM
                     return;
                 }
 
-                if (gameType == 2)
+                if (gameType == GameMode.TwoPlayer)
                 {
                     Button btn = moveStack.Pop();
                     btn.BackColor = GameConstant.boardColor;
@@ -448,5 +509,7 @@ namespace Caro_UDTM
                 }
             }
         }
+
+        #endregion
     }
 }

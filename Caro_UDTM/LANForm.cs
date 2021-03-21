@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caro_UDTM.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Caro_UDTM
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MainForm game = new MainForm(2, true);
+            MainForm game = new MainForm(GameMode.LAN, true);
             Visible = false;
             if (!game.IsDisposed) game.ShowDialog();
             Visible = true;
@@ -27,7 +28,7 @@ namespace Caro_UDTM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainForm game = new MainForm(2, false, textBox1.Text);
+            MainForm game = new MainForm(GameMode.LAN, false, textBox1.Text);
             Visible = false;
             if (!game.IsDisposed) game.ShowDialog();
             Visible = true;

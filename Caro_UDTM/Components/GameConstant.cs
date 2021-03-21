@@ -33,5 +33,15 @@ namespace Caro_UDTM.Components
 
         public static string backgroundMusic = @".\Resources\Kisstherain-Yiruma_7x9x.wav";
 
+        // Main font
+        public static Font mainFont = new Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+    }
+
+    public enum GameMode
+    {
+        TwoPlayer = 2,
+        OnePlayer = 1,
+        LAN = 3,
     }
 }

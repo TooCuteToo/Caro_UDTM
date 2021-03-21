@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.startGameBtn = new System.Windows.Forms.Button();
             this.previousBtn = new System.Windows.Forms.Button();
             this.nextBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +51,7 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
             this.richTextBox1.Location = new System.Drawing.Point(19, 403);
             this.richTextBox1.Name = "richTextBox1";
@@ -60,12 +60,22 @@
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Caro_UDTM.Properties.Resources.tutorial_5;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(379, 369);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // startGameBtn
             // 
             this.startGameBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.startGameBtn.FlatAppearance.BorderSize = 0;
             this.startGameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.startGameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startGameBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startGameBtn.ForeColor = System.Drawing.Color.Black;
             this.startGameBtn.Location = new System.Drawing.Point(148, 594);
             this.startGameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -109,16 +119,6 @@
             this.nextBtn.TabIndex = 5;
             this.nextBtn.UseVisualStyleBackColor = false;
             this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Caro_UDTM.Properties.Resources.tutorial_5;
-            this.pictureBox1.Location = new System.Drawing.Point(19, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(379, 369);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // HelpForm
             // 

@@ -34,6 +34,7 @@
             this.onePlayerBtn = new System.Windows.Forms.Button();
             this.twoPlayerBtn = new System.Windows.Forms.Button();
             this.mainMenu = new System.Windows.Forms.Panel();
+            this.exitBtn = new System.Windows.Forms.Button();
             this.helpBtn = new System.Windows.Forms.Button();
             this.leaderBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.leaderboardPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.exitBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameModeMenu.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -70,7 +70,7 @@
             this.multiPlayerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.multiPlayerBtn.FlatAppearance.BorderSize = 0;
             this.multiPlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.multiPlayerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multiPlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.multiPlayerBtn.Location = new System.Drawing.Point(146, 172);
             this.multiPlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.multiPlayerBtn.Name = "multiPlayerBtn";
@@ -78,13 +78,14 @@
             this.multiPlayerBtn.TabIndex = 4;
             this.multiPlayerBtn.Text = "MULTIPLAYER";
             this.multiPlayerBtn.UseVisualStyleBackColor = false;
+            this.multiPlayerBtn.Click += new System.EventHandler(this.multiPlayerBtn_Click);
             // 
             // onePlayerBtn
             // 
             this.onePlayerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.onePlayerBtn.FlatAppearance.BorderSize = 0;
             this.onePlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.onePlayerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onePlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onePlayerBtn.Location = new System.Drawing.Point(147, 15);
             this.onePlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.onePlayerBtn.Name = "onePlayerBtn";
@@ -99,7 +100,7 @@
             this.twoPlayerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.twoPlayerBtn.FlatAppearance.BorderSize = 0;
             this.twoPlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.twoPlayerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.twoPlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.twoPlayerBtn.Location = new System.Drawing.Point(147, 93);
             this.twoPlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.twoPlayerBtn.Name = "twoPlayerBtn";
@@ -122,12 +123,28 @@
             this.mainMenu.Size = new System.Drawing.Size(520, 328);
             this.mainMenu.TabIndex = 2;
             // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.exitBtn.FlatAppearance.BorderSize = 0;
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitBtn.ForeColor = System.Drawing.Color.Black;
+            this.exitBtn.Location = new System.Drawing.Point(148, 249);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(244, 57);
+            this.exitBtn.TabIndex = 5;
+            this.exitBtn.Text = "EXIT";
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
             // helpBtn
             // 
             this.helpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.helpBtn.FlatAppearance.BorderSize = 0;
             this.helpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.helpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpBtn.ForeColor = System.Drawing.Color.Black;
             this.helpBtn.Location = new System.Drawing.Point(147, 171);
             this.helpBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -143,7 +160,7 @@
             this.leaderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.leaderBtn.FlatAppearance.BorderSize = 0;
             this.leaderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.leaderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaderBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leaderBtn.ForeColor = System.Drawing.Color.Black;
             this.leaderBtn.Location = new System.Drawing.Point(147, 93);
             this.leaderBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -159,7 +176,7 @@
             this.settingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.settingBtn.FlatAppearance.BorderSize = 0;
             this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.settingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingBtn.ForeColor = System.Drawing.Color.Black;
             this.settingBtn.Location = new System.Drawing.Point(147, 15);
             this.settingBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -174,7 +191,7 @@
             this.startGameBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.startGameBtn.FlatAppearance.BorderSize = 0;
             this.startGameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.startGameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startGameBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startGameBtn.ForeColor = System.Drawing.Color.Black;
             this.startGameBtn.Location = new System.Drawing.Point(159, 249);
             this.startGameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -201,7 +218,7 @@
             this.playerFirstBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.playerFirstBtn.FlatAppearance.BorderSize = 0;
             this.playerFirstBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.playerFirstBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerFirstBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerFirstBtn.Location = new System.Drawing.Point(147, 15);
             this.playerFirstBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.playerFirstBtn.Name = "playerFirstBtn";
@@ -216,7 +233,7 @@
             this.comFirstBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.comFirstBtn.FlatAppearance.BorderSize = 0;
             this.comFirstBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comFirstBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comFirstBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comFirstBtn.Location = new System.Drawing.Point(147, 93);
             this.comFirstBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comFirstBtn.Name = "comFirstBtn";
@@ -246,22 +263,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // exitBtn
-            // 
-            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-            this.exitBtn.FlatAppearance.BorderSize = 0;
-            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(148, 249);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(244, 57);
-            this.exitBtn.TabIndex = 5;
-            this.exitBtn.Text = "EXIT";
-            this.exitBtn.UseVisualStyleBackColor = false;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // pictureBox1
             // 
