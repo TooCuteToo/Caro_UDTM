@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Caro_UDTM</RootNamespace>
     <AssemblyName>Caro_UDTM</AssemblyName>
@@ -137,9 +137,6 @@
   <ItemGroup>
     <None Include="Resources\arrow-right-32.png" />
     <None Include="Resources\arrow-left-32.png" />
-    <Content Include="Resources\Kisstherain-Yiruma_7x9x.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\MenuXIcon.png" />
     <None Include="Resources\menu_0_icon.png" />
     <None Include="Resources\menu_o_icon.png" />

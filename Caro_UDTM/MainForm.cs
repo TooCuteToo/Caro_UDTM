@@ -217,18 +217,18 @@ namespace Caro_UDTM
 
         private void controlMusic(int mode)
         {
-            SoundPlayer soundPlayer = new SoundPlayer(GameConstant.backgroundMusic);
+            //SoundPlayer soundPlayer = new SoundPlayer(GameConstant.backgroundMusic);
 
-            switch (mode)
-            {
-                case 1:
-                    soundPlayer.PlayLooping();
-                    return;
+            //switch (mode)
+            //{
+            //    case 1:
+            //        soundPlayer.PlayLooping();
+            //        return;
 
-                case 2:
-                    soundPlayer.Stop();
-                    return;
-            }
+            //    case 2:
+            //        soundPlayer.Stop();
+            //        return;
+            //}
         }
 
         #endregion
@@ -310,6 +310,8 @@ namespace Caro_UDTM
                 Point point = new Point(bestMove[0], bestMove[1]);
 
                 playMove(point);
+
+                Console.WriteLine("Black: " + GameLogic.getScore(caroBoard, true, true) + " White: " + GameLogic.getScore(caroBoard, false, true));
 
                 winner = checkWinner();
 
@@ -486,7 +488,7 @@ namespace Caro_UDTM
                         btn.Image = null;
 
                         caroBoard.clearMove(point.X, point.Y);
-                        caroBoard.printBoard();
+                        //caroBoard.printBoard();
                     }
 
                     return;
@@ -502,7 +504,7 @@ namespace Caro_UDTM
                     btn.Image = null;
 
                     caroBoard.clearMove(point.X, point.Y);
-                    caroBoard.printBoard();
+                    //caroBoard.printBoard();
                     isX = !isX;
 
                     return;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -12,9 +13,10 @@ namespace Caro_UDTM.Components
     {
         #region Lấy toàn bộ những nước khả thi
 
-        public static List<int[]> generateMoves(Board caroBoard)
+        public static ArrayList generateMoves(Board caroBoard)
         {
-            List<int[]> posibleMoveList = new List<int[]>();
+            //List<int[]> posibleMoveList = new List<int[]>();
+            ArrayList posibleMoveList = new ArrayList();
             int[,] board = caroBoard.getBoard();
 
             int n = GameConstant.ROWS;
@@ -105,7 +107,7 @@ namespace Caro_UDTM.Components
 
         public static int[] calculateNextMove(int depth, Board caroBoard)
         {
-            Console.WriteLine("DIFFICULTY: " + depth);
+            //Console.WriteLine("DIFFICULTY: " + depth);
 
             int[] nextMove = new int[2];
             Object[] bestMove = searchWinningMove(caroBoard);
@@ -139,9 +141,17 @@ namespace Caro_UDTM.Components
 
         public static Object[] minimax(int depth, Board caroBoard, bool max, double alpha, double beta)
         {
-            List<int[]> posibleMoveList = generateMoves(caroBoard);
+            //List<int[]> posibleMoveList = generateMoves(caroBoard);
 
-            if (depth == 0 || posibleMoveList.Count == 0)
+            if (depth == 0)
+            {
+                Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
+                return move;
+            }
+
+            ArrayList posibleMoveList = generateMoves(caroBoard);
+
+            if (posibleMoveList.Count == 0)
             {
                 Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
                 return move;
@@ -155,11 +165,13 @@ namespace Caro_UDTM.Components
 
                 foreach (int[] move in posibleMoveList)
                 {
-                    Board dummyBoard = new Board(caroBoard);
+                    //Board caroBoard = new Board(caroBoard);
 
-                    dummyBoard.addMove(move[0], move[1], false);
+                    caroBoard.addMove(move[0], move[1], false);
 
-                    Object[] tempMove = minimax(depth - 1, dummyBoard, !max, alpha, beta);
+                    Object[] tempMove = minimax(depth - 1, caroBoard, !max, alpha, beta);
+
+                    caroBoard.clearMove(move[0], move[1]);
 
                     if ((Double)(tempMove[0]) > alpha)
                     {
@@ -182,16 +194,19 @@ namespace Caro_UDTM.Components
             else
             {
                 bestMove[0] = 100000000.0;
-                bestMove[1] = posibleMoveList[0][0];
-                bestMove[2] = posibleMoveList[0][1];
+                //bestMove[1] = posibleMoveList[0][0];
+                //bestMove[2] = posibleMoveList[0][1];
+                //bestMove[1] = (int[,])posibleMoveList[0][0];
 
                 foreach (int[] move in posibleMoveList)
                 {
-                    Board dummyBoard = new Board(caroBoard);
+                    //Board caroBoard = new Board(caroBoard);
 
-                    dummyBoard.addMove(move[0], move[1], true);
+                    caroBoard.addMove(move[0], move[1], true);
 
-                    Object[] tempMove = minimax(depth - 1, dummyBoard, !max, alpha, beta);
+                    Object[] tempMove = minimax(depth - 1, caroBoard, !max, alpha, beta);
+
+                    caroBoard.clearMove(move[0], move[1]);
 
                     if (((Double)tempMove[0]) < beta)
                     {
@@ -221,6 +236,7 @@ namespace Caro_UDTM.Components
 
         public static double evaluateBoardForO(Board caroBoard, bool isXTurn)
         {
+            MessageBox.Show(isXTurn.ToString());
             double xScore = getScore(caroBoard, true, isXTurn);
             double oScore = getScore(caroBoard, false, isXTurn);
 
@@ -237,22 +253,26 @@ namespace Caro_UDTM.Components
 
         public static Object[] searchWinningMove(Board caroBoard)
         {
-            List<int[]> posibleMoveList = generateMoves(caroBoard);
+            //List<int[]> posibleMoveList = generateMoves(caroBoard);
+            ArrayList posibleMoveList = generateMoves(caroBoard);
             Object[] winningMove = new Object[3];
 
             foreach (int[] move in posibleMoveList)
             {
-                Board dummnyBoard = new Board(caroBoard);
+                //Board dummnyBoard = new Board(caroBoard);
 
-                dummnyBoard.addMove(move[0], move[1], false);
+                caroBoard.addMove(move[0], move[1], false);
 
-                if (getScore(caroBoard, false, false) >= GameConstant.WIN_SCORE)
+                if (getScore(caroBoard, false, false) == GameConstant.WIN_SCORE)
                 {
                     winningMove[1] = move[0];
                     winningMove[2] = move[1];
+                    caroBoard.clearMove(move[0], move[1]);
 
                     return winningMove;
                 }
+
+                caroBoard.clearMove(move[0], move[1]);
             }
 
             return null;
@@ -273,7 +293,7 @@ namespace Caro_UDTM.Components
             int diagonalScore = evaluateDiagonal(caroBoard, isX, isXTurn);
             //Console.WriteLine("DIEM HANG CHEO NE: " + diagonalScore);
 
-            Console.WriteLine((horizontalScore + verticalScore + diagonalScore).ToString());
+            //Console.WriteLine((horizontalScore + verticalScore + diagonalScore).ToString());
 
             return horizontalScore + verticalScore + diagonalScore;
 
@@ -326,7 +346,6 @@ namespace Caro_UDTM.Components
 
                 if (consecutive > 0)
                 {
-                    if (consecutive == 4) MessageBox.Show("heree");
                     score += getConsecutiveSetScore(consecutive, block, isX == playerTurn);
                 }
 
@@ -515,12 +534,13 @@ namespace Caro_UDTM.Components
             switch (consecutive)
             {
                 case 5:
-                    if (block < 2 ) return GameConstant.WIN_SCORE;
-                    else
-                    {
-                        if (currentTurn) return 10;
-                        else return 5;
-                    }
+                    //if (block < 2 ) return GameConstant.WIN_SCORE;
+                    //else
+                    //{
+                    //    if (currentTurn) return 10;
+                    //    else return 5;
+                    //}
+                    return GameConstant.WIN_SCORE;
 
                 case 4:
                     if (currentTurn) return winGuarantee;
@@ -558,7 +578,7 @@ namespace Caro_UDTM.Components
                     return 1;
             }
 
-            return GameConstant.WIN_SCORE * 2;
+            return 0;
         }
 
         #endregion

@@ -31,7 +31,7 @@ namespace Caro_UDTM.Components
         //
         public static Color buttonClickColor = Color.FromArgb(213, 244, 255);
 
-        public static string backgroundMusic = @".\Resources\Kisstherain-Yiruma_7x9x.wav";
+        //public static string backgroundMusic = @".\Resources\Kisstherain-Yiruma_7x9x.wav";
 
         // Main font
         public static Font mainFont = new Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
