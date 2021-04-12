@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,12 +17,18 @@ namespace Caro_UDTM
         ComboBox comboBox;
         Label label2;
         TextBox textBox2;
-        Button okBtn, hostBtn, connectBtn;
+        Button okBtn;
         RadioButton hostRadio, connectRadio;
+        GameMode gameType;
+        Form context;
 
-        public PromptForm(string caption, GameMode gameType)
+        public PromptForm(string caption, GameMode gameType, Form context)
         {
             InitializeComponent();
+
+            this.Text = caption;
+            this.gameType = gameType;
+            this.context = context;
 
             initLabel();
             initTextBox();
@@ -30,8 +37,6 @@ namespace Caro_UDTM
             initButton();
 
             initRadio();
-
-            this.Text = caption;
 
             if (gameType == GameMode.OnePlayer)
             {
@@ -61,15 +66,19 @@ namespace Caro_UDTM
             }
             else
             {
+                string myIP = Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(); 
+
                 label1.Font = GameConstant.mainFont;
                 label1.Location = new Point(20, 65);
                 label1.Text = "IP ADDRESS:";
 
+                textBox1.Text = myIP;
+                textBox1.Enabled = false;
+
                 this.Controls.Add(label1);
                 this.Controls.Add(textBox1);
 
-                this.Controls.Add(hostBtn);
-                this.Controls.Add(connectBtn);
+                this.Controls.Add(okBtn);
 
                 this.Controls.Add(hostRadio);
                 this.Controls.Add(connectRadio);
@@ -133,41 +142,22 @@ namespace Caro_UDTM
         {
             okBtn = new Button()
             {
-                Location = new Point(110, 155),
+                Location = new Point(145, 155),
                 Size = new Size(185, 39),
                 Font = GameConstant.mainFont,
                 Text = "OK",
                 BackColor = Color.FromArgb(241, 196, 15),
+                ForeColor = Color.Black,
                 FlatStyle = FlatStyle.Flat,
                 DialogResult = DialogResult.OK,
             };
 
-            hostBtn = new Button()
-            {
-                Location = new Point(20, 155),
-                Size = new Size(170, 39),
-                Font = GameConstant.mainFont,
-                Text = "HOST",
-                BackColor = Color.FromArgb(241, 196, 15),
-                FlatStyle = FlatStyle.Flat,
-            };
-
-            connectBtn = new Button()
-            {
-                Location = new Point(220, 155),
-                Size = new Size(170, 39),
-                Font = GameConstant.mainFont,
-                Text = "CONNECT",
-                BackColor = Color.FromArgb(241, 196, 15),
-                FlatStyle = FlatStyle.Flat,
-            };
-
             okBtn.FlatAppearance.BorderSize = 0;
-            hostBtn.FlatAppearance.BorderSize = 0;
-            connectBtn.FlatAppearance.BorderSize = 0;
 
-            hostBtn.Click += hostBtn_click;
-            connectBtn.Click += connectBtn_click;
+            if (gameType == GameMode.LAN)
+            {
+                okBtn.Click += lanBtn_click;
+            }
         }
 
         private void initRadio()
@@ -216,34 +206,27 @@ namespace Caro_UDTM
             return new object[2] { null, "NGUYEN VAN B" };
         }
 
-        public object[] showLanDialog()
+        private void lanBtn_click(object sender, EventArgs e)
         {
-            if (this.ShowDialog() == DialogResult.OK)
+            MainForm game;
+
+            if (hostRadio.Checked)
             {
-                if (textBox1.Text == "") textBox1.Text = "NGUYEN VAN A";
-
-                if (textBox2.Text == "") textBox2.Text = "NGUYEN VAN B";
-
-                return new object[2] { textBox1.Text, textBox2.Text };
+                game = new MainForm(GameMode.LAN, true, textBox1.Text);
+                this.Visible = false;
+                context.Visible = false;
+                if (!game.IsDisposed) game.ShowDialog();
+                context.Visible = true;
+                return;
             }
 
-            return new object[2] { null, "NGUYEN VAN B" };
+            game = new MainForm(GameMode.LAN, false, textBox1.Text);
+            this.Visible = false;
+            context.Visible = false;
+            if (!game.IsDisposed) game.ShowDialog();
+            context.Visible = true;
+            return;
         }
 
-        private void hostBtn_click(object sender, EventArgs e)
-        {
-            MainForm game = new MainForm(GameMode.LAN, true, textBox1.Text);
-            Visible = false;
-            if (!game.IsDisposed) game.ShowDialog();
-            Visible = true;
-        }
-
-        private void connectBtn_click(object sender, EventArgs e)
-        {
-            MainForm game = new MainForm(GameMode.LAN, false, textBox1.Text);
-            Visible = false;
-            if (!game.IsDisposed) game.ShowDialog();
-            Visible = true;
-        }
     }
 }

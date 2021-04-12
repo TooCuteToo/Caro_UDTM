@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Caro_UDTM.Components
 {
-    class GameLogic
+    public class GameLogic
     {
         #region Lấy toàn bộ những nước khả thi
 
@@ -116,6 +116,7 @@ namespace Caro_UDTM.Components
             {
                 nextMove[0] = (int) bestMove[1];
                 nextMove[1] = (int) bestMove[2];
+                
             }
 
             else
@@ -236,7 +237,6 @@ namespace Caro_UDTM.Components
 
         public static double evaluateBoardForO(Board caroBoard, bool isXTurn)
         {
-            MessageBox.Show(isXTurn.ToString());
             double xScore = getScore(caroBoard, true, isXTurn);
             double oScore = getScore(caroBoard, false, isXTurn);
 
@@ -259,11 +259,12 @@ namespace Caro_UDTM.Components
 
             foreach (int[] move in posibleMoveList)
             {
-                //Board dummnyBoard = new Board(caroBoard);
+                //Board dummyBoard = new Board(caroBoard);
 
                 caroBoard.addMove(move[0], move[1], false);
+                //Console.WriteLine(getScore(caroBoard, false, true));
 
-                if (getScore(caroBoard, false, false) == GameConstant.WIN_SCORE)
+                if (getScore(caroBoard, false, false) >= GameConstant.WIN_SCORE)
                 {
                     winningMove[1] = move[0];
                     winningMove[2] = move[1];
@@ -296,7 +297,6 @@ namespace Caro_UDTM.Components
             //Console.WriteLine((horizontalScore + verticalScore + diagonalScore).ToString());
 
             return horizontalScore + verticalScore + diagonalScore;
-
         }
 
         #endregion
@@ -582,6 +582,5 @@ namespace Caro_UDTM.Components
         }
 
         #endregion
-
     }
 }

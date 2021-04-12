@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Caro_UDTM</RootNamespace>
     <AssemblyName>Caro_UDTM</AssemblyName>
@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\NUnit.Framework-3.13.1\bin\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Components\Board.cs" />
     <Compile Include="Components\GameConstant.cs" />
+    <Compile Include="Components\GameEngine.cs" />
     <Compile Include="Components\GameLogic.cs" />
     <Compile Include="Components\Tutorial.cs" />
     <Compile Include="HelpForm.cs">

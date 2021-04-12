@@ -59,10 +59,10 @@
             this.gameModeMenu.Controls.Add(this.multiPlayerBtn);
             this.gameModeMenu.Controls.Add(this.onePlayerBtn);
             this.gameModeMenu.Controls.Add(this.twoPlayerBtn);
-            this.gameModeMenu.Location = new System.Drawing.Point(-520, 310);
+            this.gameModeMenu.Location = new System.Drawing.Point(-440, 310);
             this.gameModeMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gameModeMenu.Name = "gameModeMenu";
-            this.gameModeMenu.Size = new System.Drawing.Size(520, 249);
+            this.gameModeMenu.Size = new System.Drawing.Size(440, 249);
             this.gameModeMenu.TabIndex = 1;
             // 
             // multiPlayerBtn
@@ -71,7 +71,8 @@
             this.multiPlayerBtn.FlatAppearance.BorderSize = 0;
             this.multiPlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.multiPlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.multiPlayerBtn.Location = new System.Drawing.Point(146, 172);
+            this.multiPlayerBtn.ForeColor = System.Drawing.Color.Black;
+            this.multiPlayerBtn.Location = new System.Drawing.Point(107, 172);
             this.multiPlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.multiPlayerBtn.Name = "multiPlayerBtn";
             this.multiPlayerBtn.Size = new System.Drawing.Size(244, 57);
@@ -86,7 +87,8 @@
             this.onePlayerBtn.FlatAppearance.BorderSize = 0;
             this.onePlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.onePlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onePlayerBtn.Location = new System.Drawing.Point(147, 15);
+            this.onePlayerBtn.ForeColor = System.Drawing.Color.Black;
+            this.onePlayerBtn.Location = new System.Drawing.Point(108, 15);
             this.onePlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.onePlayerBtn.Name = "onePlayerBtn";
             this.onePlayerBtn.Size = new System.Drawing.Size(244, 57);
@@ -101,7 +103,8 @@
             this.twoPlayerBtn.FlatAppearance.BorderSize = 0;
             this.twoPlayerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.twoPlayerBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.twoPlayerBtn.Location = new System.Drawing.Point(147, 93);
+            this.twoPlayerBtn.ForeColor = System.Drawing.Color.Black;
+            this.twoPlayerBtn.Location = new System.Drawing.Point(108, 93);
             this.twoPlayerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.twoPlayerBtn.Name = "twoPlayerBtn";
             this.twoPlayerBtn.Size = new System.Drawing.Size(244, 57);
@@ -120,7 +123,7 @@
             this.mainMenu.Location = new System.Drawing.Point(12, 310);
             this.mainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(520, 328);
+            this.mainMenu.Size = new System.Drawing.Size(440, 328);
             this.mainMenu.TabIndex = 2;
             // 
             // exitBtn
@@ -130,7 +133,7 @@
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(148, 249);
+            this.exitBtn.Location = new System.Drawing.Point(108, 249);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(244, 57);
@@ -146,7 +149,7 @@
             this.helpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.helpBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpBtn.ForeColor = System.Drawing.Color.Black;
-            this.helpBtn.Location = new System.Drawing.Point(147, 171);
+            this.helpBtn.Location = new System.Drawing.Point(107, 171);
             this.helpBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.helpBtn.Name = "helpBtn";
             this.helpBtn.Size = new System.Drawing.Size(244, 57);
@@ -162,7 +165,7 @@
             this.leaderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.leaderBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leaderBtn.ForeColor = System.Drawing.Color.Black;
-            this.leaderBtn.Location = new System.Drawing.Point(147, 93);
+            this.leaderBtn.Location = new System.Drawing.Point(107, 93);
             this.leaderBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.leaderBtn.Name = "leaderBtn";
             this.leaderBtn.Size = new System.Drawing.Size(244, 57);
@@ -178,7 +181,7 @@
             this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.settingBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingBtn.ForeColor = System.Drawing.Color.Black;
-            this.settingBtn.Location = new System.Drawing.Point(147, 15);
+            this.settingBtn.Location = new System.Drawing.Point(107, 15);
             this.settingBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingBtn.Name = "settingBtn";
             this.settingBtn.Size = new System.Drawing.Size(244, 57);
@@ -193,7 +196,7 @@
             this.startGameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.startGameBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startGameBtn.ForeColor = System.Drawing.Color.Black;
-            this.startGameBtn.Location = new System.Drawing.Point(159, 249);
+            this.startGameBtn.Location = new System.Drawing.Point(119, 249);
             this.startGameBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.startGameBtn.Name = "startGameBtn";
             this.startGameBtn.Size = new System.Drawing.Size(244, 57);
@@ -207,10 +210,10 @@
             this.onePlayerMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.onePlayerMenu.Controls.Add(this.playerFirstBtn);
             this.onePlayerMenu.Controls.Add(this.comFirstBtn);
-            this.onePlayerMenu.Location = new System.Drawing.Point(-520, 310);
+            this.onePlayerMenu.Location = new System.Drawing.Point(-440, 310);
             this.onePlayerMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.onePlayerMenu.Name = "onePlayerMenu";
-            this.onePlayerMenu.Size = new System.Drawing.Size(520, 249);
+            this.onePlayerMenu.Size = new System.Drawing.Size(440, 249);
             this.onePlayerMenu.TabIndex = 4;
             // 
             // playerFirstBtn
@@ -219,7 +222,8 @@
             this.playerFirstBtn.FlatAppearance.BorderSize = 0;
             this.playerFirstBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.playerFirstBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerFirstBtn.Location = new System.Drawing.Point(147, 15);
+            this.playerFirstBtn.ForeColor = System.Drawing.Color.Black;
+            this.playerFirstBtn.Location = new System.Drawing.Point(108, 15);
             this.playerFirstBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.playerFirstBtn.Name = "playerFirstBtn";
             this.playerFirstBtn.Size = new System.Drawing.Size(244, 57);
@@ -234,7 +238,8 @@
             this.comFirstBtn.FlatAppearance.BorderSize = 0;
             this.comFirstBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comFirstBtn.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comFirstBtn.Location = new System.Drawing.Point(147, 93);
+            this.comFirstBtn.ForeColor = System.Drawing.Color.Black;
+            this.comFirstBtn.Location = new System.Drawing.Point(108, 93);
             this.comFirstBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comFirstBtn.Name = "comFirstBtn";
             this.comFirstBtn.Size = new System.Drawing.Size(244, 57);
@@ -267,7 +272,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Caro_UDTM.Properties.Resources.menu_o_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(160, 58);
+            this.pictureBox1.Location = new System.Drawing.Point(120, 58);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(244, 155);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -279,7 +284,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(543, 692);
+            this.ClientSize = new System.Drawing.Size(462, 653);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.leaderboardPanel);
             this.Controls.Add(this.onePlayerMenu);
@@ -287,8 +292,8 @@
             this.Controls.Add(this.startGameBtn);
             this.Controls.Add(this.mainMenu);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(561, 739);
-            this.MinimumSize = new System.Drawing.Size(561, 739);
+            this.MaximumSize = new System.Drawing.Size(480, 700);
+            this.MinimumSize = new System.Drawing.Size(480, 700);
             this.Name = "MenuForm";
             this.Text = "GAME CARO";
             this.gameModeMenu.ResumeLayout(false);

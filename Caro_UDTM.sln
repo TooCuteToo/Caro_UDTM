@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caro_UDTM", "Caro_UDTM\Caro_UDTM.csproj", "{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaroLogicTest", "CaroLogicTest\CaroLogicTest.csproj", "{0FAE33D6-702D-4078-8982-2AF50BEC851E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE65CC28-6DA0-4A56-BFED-85CC291F98B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FAE33D6-702D-4078-8982-2AF50BEC851E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAE33D6-702D-4078-8982-2AF50BEC851E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAE33D6-702D-4078-8982-2AF50BEC851E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAE33D6-702D-4078-8982-2AF50BEC851E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

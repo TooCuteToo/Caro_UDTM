@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Caro_UDTM.Components
 {
-    class GameConstant
+    public class GameConstant
     {
-        public static int ROWS = 21;
-        public static int COLS = 21;
+        public static int ROWS = 15;
+        public static int COLS = 15;
 
-        public static int WIN_SCORE = 100000000;
+        public static int WIN_SCORE = 10000000;
 
         public static Image X_IMG = new Bitmap(Properties.Resources.x, new Size(24 - 7, 24 - 7));
         public static Image O_IMG = new Bitmap(Properties.Resources.o, new Size(24 - 7, 24 - 7));

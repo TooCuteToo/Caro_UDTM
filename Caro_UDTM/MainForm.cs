@@ -17,11 +17,14 @@ namespace Caro_UDTM
     {
         private Stack<Button> moveStack;
         private List<Button> listBtn;
+        private List<Button> movedBtns;
 
         #region Thuộc tính của người
 
         private bool isX;
         private bool isXTurn;
+        private bool isPlayerFirst;
+
         private GameMode gameType;
         private string userName;
 
@@ -52,10 +55,13 @@ namespace Caro_UDTM
         {
             InitializeComponent();
             caroBoard = new Board();
+            movedBtns = new List<Button>();
 
             this.gameType = gameType;
             this.userName = userName;
             this.depth = depth;
+            this.isPlayerFirst = isPlayerFirst;
+            playerTwoNameTxt.Text = "PC";
 
             switch (gameType)
             {
@@ -85,6 +91,7 @@ namespace Caro_UDTM
         {
             InitializeComponent();
 
+            movedBtns = new List<Button>();
             caroBoard = new Board();
             this.gameType = gameType;
 
@@ -100,8 +107,9 @@ namespace Caro_UDTM
         {
             InitializeComponent();
 
-            listBtn = new List<Button>();
             caroBoard = new Board();
+            listBtn = new List<Button>();
+
             this.gameType = gameType;
             this.isHost = isHost ? 0 : 1;
 
@@ -129,6 +137,7 @@ namespace Caro_UDTM
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    this.Close();
                     return;
                 }
 
@@ -183,6 +192,7 @@ namespace Caro_UDTM
         private void renderBoardLayout()
         {
             listBtn = new List<Button>();
+
             if (gameType == GameMode.OnePlayer)
             {
                 playerOneNameTxt.Text = userName.ToUpper();
@@ -208,7 +218,24 @@ namespace Caro_UDTM
                 }
             }
 
-            mainTablePanel.Controls.Add(tableLayout, 1, 0);
+            mainTablePanel.Controls.Add(tableLayout);
+        }
+
+        #endregion
+
+        #region Hàm thực hiện khởi tạo lại bàn cờ
+
+        private void clearBoardLayout()
+        {
+            foreach (Button btn in movedBtns)
+            {
+                btn.Image = null;
+                btn.Click += btn_click;
+                btn.BackColor = GameConstant.boardColor;
+            }
+
+            moveStack = new Stack<Button>();
+            movedBtns = new List<Button>();
         }
 
         #endregion
@@ -292,14 +319,12 @@ namespace Caro_UDTM
             {
                 if (winner == 2)
                 {
-                    MessageBox.Show("X won");
-                    return;
+                    showWinnerDialog(playerTwoNameTxt.Text);
                 }
 
                 if (winner == 1)
                 {
-                    MessageBox.Show("O won");
-                    return;
+                    showWinnerDialog(playerOneNameTxt.Text);
                 }
             }
 
@@ -311,14 +336,13 @@ namespace Caro_UDTM
 
                 playMove(point);
 
-                Console.WriteLine("Black: " + GameLogic.getScore(caroBoard, true, true) + " White: " + GameLogic.getScore(caroBoard, false, true));
+                //Console.WriteLine("Black: " + GameLogic.getScore(caroBoard, true, true) + " White: " + GameLogic.getScore(caroBoard, false, true));
 
                 winner = checkWinner();
 
                 if (winner == 1)
                 {
-                    MessageBox.Show("O won");
-                    return;
+                    showWinnerDialog(playerTwoNameTxt.Text);
                 }
 
                 isPlayerTurn = true;
@@ -330,6 +354,23 @@ namespace Caro_UDTM
 
             //Console.WriteLine("\n========= DIEM DANH GIA =========");
             //Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
+        }
+
+        private void showWinnerDialog(string userName)
+        {
+            DialogResult result = MessageBox.Show(userName + " IS A WINNER", "WINNER", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                clearBoardLayout();
+                caroBoard = new Board();
+
+                return;
+            }
+
+            this.Close();
+
+            return;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -367,6 +408,8 @@ namespace Caro_UDTM
             TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
             Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
             btn.BackColor = GameConstant.buttonClickColor;
+            movedBtns.Add(btn);
+            MessageBox.Show(point.X.ToString() + " " + point.Y.ToString());
 
             if (moveStack.Count > 0)
             {

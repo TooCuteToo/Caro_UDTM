@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Caro_UDTM.Components
 {
-    class Board
+    public class Board
     {
         private int[,] board;
 

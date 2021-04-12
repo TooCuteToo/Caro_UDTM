@@ -60,7 +60,7 @@ namespace Caro_UDTM
         private void onePlayerBtn_Click(object sender, EventArgs e)
         {
             Transition transition = new Transition(new TransitionType_EaseInEaseOut(500));
-            prompt = new PromptForm("NAME INPUT", GameMode.OnePlayer);
+            prompt = new PromptForm("NAME INPUT", GameMode.OnePlayer, this);
 
             Control controlOn, controlOff;
 
@@ -115,7 +115,7 @@ namespace Caro_UDTM
 
         private void twoPlayerBtn_Click(object sender, EventArgs e)
         {
-            prompt = new PromptForm("NAME INPUT", GameMode.TwoPlayer);
+            prompt = new PromptForm("NAME INPUT", GameMode.TwoPlayer, this);
             object[] result = prompt.showDialog2();
 
             if (result[0] == null) return;
@@ -173,19 +173,7 @@ namespace Caro_UDTM
 
         private void multiPlayerBtn_Click(object sender, EventArgs e)
         {
-            prompt = new PromptForm("CARO", GameMode.LAN);
-
-            Visible = false;
-            object[] result = prompt.showLanDialog();
-            Visible = true;
-
-            if (result[0] == null) return;
-
-            MainForm game = new MainForm(GameMode.LAN, result[0].ToString(), result[1].ToString());
-
-            Visible = false;
-            game.ShowDialog();
-            Visible = true;
+            new PromptForm("CARO", GameMode.LAN, this).showDialog();
         }
     }
 }

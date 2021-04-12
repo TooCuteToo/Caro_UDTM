@@ -1,7 +1,6 @@
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Release\Caro_UDTM.exe.config
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Release\Caro_UDTM.exe
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Release\Caro_UDTM.pdb
-C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Release\Transitions.dll
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.LANForm.resources
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Release\Caro_UDTM.MainForm.resources
