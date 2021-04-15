@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="Components\Board.cs" />
     <Compile Include="Components\GameConstant.cs" />
-    <Compile Include="Components\GameEngine.cs" />
     <Compile Include="Components\GameLogic.cs" />
     <Compile Include="Components\Tutorial.cs" />
     <Compile Include="HelpForm.cs">

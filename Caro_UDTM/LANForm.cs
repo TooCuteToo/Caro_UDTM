@@ -11,27 +11,27 @@ using System.Windows.Forms;
 
 namespace Caro_UDTM
 {
-    public partial class LANForm : Form
+  public partial class LANForm : Form
+  {
+    public LANForm()
     {
-        public LANForm()
-        {
-            InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MainForm game = new MainForm(GameMode.LAN, true);
-            Visible = false;
-            if (!game.IsDisposed) game.ShowDialog();
-            Visible = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MainForm game = new MainForm(GameMode.LAN, false, textBox1.Text);
-            Visible = false;
-            if (!game.IsDisposed) game.ShowDialog();
-            Visible = true;
-        }
+      InitializeComponent();
     }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+      MainForm game = new MainForm(GameMode.LAN, true);
+      Visible = false;
+      if (!game.IsDisposed) game.ShowDialog();
+      Visible = true;
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      MainForm game = new MainForm(GameMode.LAN, false, textBox1.Text);
+      Visible = false;
+      if (!game.IsDisposed) game.ShowDialog();
+      Visible = true;
+    }
+  }
 }

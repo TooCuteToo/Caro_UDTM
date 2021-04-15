@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Caro_UDTM
 {
-    public partial class StartForm : Form
+  public partial class StartForm : Form
+  {
+    public StartForm()
     {
-        public StartForm()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

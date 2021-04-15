@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Caro_UDTM.Components
 {
-    class Tutorial
-    {
-        public string tutorialText;
-        public Image tutorialImage;
+  class Tutorial
+  {
+    public string tutorialText;
+    public Image tutorialImage;
 
-        public Tutorial(string tutorialText, Image tutorialImage)
-        {
-            this.tutorialImage = tutorialImage;
-            this.tutorialText = tutorialText;
-        }
+    public Tutorial(string tutorialText, Image tutorialImage)
+    {
+      this.tutorialImage = tutorialImage;
+      this.tutorialText = tutorialText;
     }
+  }
 }
