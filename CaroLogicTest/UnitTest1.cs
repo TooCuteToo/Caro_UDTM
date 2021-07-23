@@ -326,7 +326,7 @@ namespace CaroLogicTest
   public class UITest
   {
     private string filePath = @"C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\bin\Debug\CARO_UDTM.exe";
-    private int endTime = 2000;
+    private int endTime = 700;
 
     #region Khu vực test menu logic
 
@@ -336,7 +336,7 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startBtn = windows.Get<Button>(SearchCriteria.ByText("START"));
       startBtn.Click();
@@ -374,7 +374,7 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var helpBtn = windows.Get<Button>(SearchCriteria.ByText("HELP"));
       helpBtn.Click();
@@ -386,7 +386,7 @@ namespace CaroLogicTest
       for (int i = 0; i < 4; ++i)
       {
         nextBtn.Click();
-        Thread.Sleep(1000);
+        Thread.Sleep(700);
       }
 
       var prevBtn = helpWindows.Get<Button>(SearchCriteria.ByAutomationId("previousBtn"));
@@ -394,7 +394,7 @@ namespace CaroLogicTest
       for (int i = 0; i < 4; ++i)
       {
         prevBtn.Click();
-        Thread.Sleep(1000);
+        Thread.Sleep(700);
       }
 
       var letGoBtn = helpWindows.Get<Button>(SearchCriteria.ByAutomationId("startGameBtn"));
@@ -419,25 +419,35 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
       onePlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerFirstButton = windows.Get<Button>(SearchCriteria.ByText("PLAYER FIRST"));
       playerFirstButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var nameInput = windows.Get<TextBox>(SearchCriteria.ByAutomationId("nameInputTxt"));
       nameInput.Text = "NGUYEN @@@@@@";
+
+      Thread.Sleep(2000);
+
+      nameInput.Text = "NGUYEN 123123123";
+
+      Thread.Sleep(2000);
+
+      nameInput.Text = "++++++++ NGUYEN ///////////";
+
+      Thread.Sleep(2000);
 
       string nameTest = "NGUYEN ";
       Assert.AreEqual(nameInput.Text, nameTest);
@@ -453,27 +463,27 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
       onePlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerFirstButton = windows.Get<Button>(SearchCriteria.ByText("PLAYER FIRST"));
       playerFirstButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var nameInput = windows.Get<TextBox>(SearchCriteria.ByAutomationId("nameInputTxt"));
       nameInput.Text = "NGUYEN VAN B";
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -495,27 +505,27 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var twoPlayerButton = windows.Get<Button>(SearchCriteria.ByText("2 PLAYERS"));
       twoPlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerOneNameInput = windows.Get<TextBox>(SearchCriteria.ByAutomationId("playerOneNameTxt"));
       playerOneNameInput.Text = "NGUYEN VAN B";
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerTwoNameInput = windows.Get<TextBox>(SearchCriteria.ByAutomationId("playerTwoNameTxt"));
       playerTwoNameInput.Text = "NGUYEN VAN C";
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -541,17 +551,17 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var lanButton = windows.Get<Button>(SearchCriteria.ByText("MULTIPLAYER"));
       lanButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var ipAddress = windows.Get<TextBox>(SearchCriteria.ByAutomationId("ipTxt"));
 
@@ -572,22 +582,22 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
       onePlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerFirstButton = windows.Get<Button>(SearchCriteria.ByText("PLAYER FIRST"));
       playerFirstButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -608,22 +618,22 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
       onePlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playerFirstButton = windows.Get<Button>(SearchCriteria.ByText("PLAYER FIRST"));
       playerFirstButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -649,17 +659,17 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
     
       var twoPlayerButton = windows.Get<Button>(SearchCriteria.ByText("2 PLAYERS"));
       twoPlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -710,17 +720,17 @@ namespace CaroLogicTest
       var application = Application.Launch(filePath);
       var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var twoPlayerButton = windows.Get<Button>(SearchCriteria.ByText("2 PLAYERS"));
       twoPlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -736,7 +746,7 @@ namespace CaroLogicTest
       for (int i = 0; i < 3; ++i)
       {
         undoBtn.Click();
-        Thread.Sleep(1000);
+        Thread.Sleep(700);
       }
 
       Thread.Sleep(endTime);
@@ -777,12 +787,12 @@ namespace CaroLogicTest
       var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
       startNode.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
       onePlayerButton.Click();
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var comFirstButton = windows.Get<Button>(SearchCriteria.ByText("COMPUTER FIRST"));
       comFirstButton.Click();
@@ -790,7 +800,7 @@ namespace CaroLogicTest
       var difficutyCB = windows.Get<ComboBox>(SearchCriteria.ByAutomationId("difficutyCB"));
       difficutyCB.Select(1);
 
-      Thread.Sleep(1000);
+      Thread.Sleep(700);
 
       var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
       playButton.Click();
@@ -810,12 +820,69 @@ namespace CaroLogicTest
       application.Close();
     }
 
+    [TestMethod]
+    public void aiTest2()
+    {
+      var application = Application.Launch(filePath);
+      var windows = application.GetWindow("GAME CARO", InitializeOption.NoCache);
+
+      var startNode = windows.Get<Button>(SearchCriteria.ByText("START"));
+      startNode.Click();
+
+      Thread.Sleep(700);
+
+      var onePlayerButton = windows.Get<Button>(SearchCriteria.ByText("1 PLAYER"));
+      onePlayerButton.Click();
+
+      Thread.Sleep(700);
+
+      var comFirstButton = windows.Get<Button>(SearchCriteria.ByText("COMPUTER FIRST"));
+      comFirstButton.Click();
+
+      var difficutyCB = windows.Get<ComboBox>(SearchCriteria.ByAutomationId("difficutyCB"));
+      difficutyCB.Select(0);
+
+      Thread.Sleep(700);
+
+      var playButton = windows.Get<Button>(SearchCriteria.ByText("OK"));
+      playButton.Click();
+
+      var mainForm = application.GetWindow("GAME CARO", InitializeOption.NoCache);
+      var mainTablePanel = mainForm.Get<Panel>(SearchCriteria.ByAutomationId("mainTablePanel"));
+
+      var chessBoardLayout = mainForm.Get<Panel>(SearchCriteria.Indexed(1));
+
+      initTestCase2(chessBoardLayout);
+      var aiMove = chessBoardLayout.Get<Button>(SearchCriteria.Indexed(94));
+
+      Assert.AreEqual(aiMove.VisibleImage.RawFormat, GameConstant.O_IMG.RawFormat);
+
+      Thread.Sleep(endTime);
+
+      application.Close();
+    }
+
     private void initTestCase(Panel chessBoardLayout)
     {
       IUIItem[] btns = chessBoardLayout.GetMultiple(SearchCriteria.All).OfType<Button>().ToArray();
       int[] indexs = new int[]
       {
         126, 128, 142, 156, 170, 141, 171,
+      };
+
+      foreach (int index in indexs)
+      {
+        btns[index].Click();
+        Thread.Sleep(500);
+      }
+    }
+
+    private void initTestCase2(Panel chessBoardLayout)
+    {
+      IUIItem[] btns = chessBoardLayout.GetMultiple(SearchCriteria.All).OfType<Button>().ToArray();
+      int[] indexs = new int[]
+      {
+        128, 84, 126, 99, 129, 114,
       };
 
       foreach (int index in indexs)

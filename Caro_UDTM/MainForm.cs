@@ -8,6 +8,7 @@ using System.Linq;
 using System.Media;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,7 @@ namespace Caro_UDTM
     private bool aiStartFirst;
     private int depth;
     private Board caroBoard;
+    Thread worker;
 
     #endregion
 
@@ -56,30 +58,59 @@ namespace Caro_UDTM
       InitializeComponent();
       caroBoard = new Board();
       movedBtns = new List<Button>();
+      centerLabel();
 
       this.gameType = gameType;
       this.userName = userName;
       this.depth = depth;
       this.isPlayerFirst = isPlayerFirst;
-      playerTwoNameTxt.Text = "PC";
+      playerTwoNameTxt.Text = "MAY";
+      pictureBox1.Image = GameConstant.PlayerOneAvater;
+      pictureBox2.Image = GameConstant.AIAvater;
 
-      switch (gameType)
+      aiStartFirst = !isPlayerFirst;
+      isX = false;
+      isXTurn = false;
+
+      if (isPlayerFirst)
       {
-        case GameMode.OnePlayer:
-          aiStartFirst = !isPlayerFirst;
-          isX = false;
-          isXTurn = false;
+        isX = true;
+        isXTurn = true;
+        isPlayerTurn = true;
+      } else
+      {
+        isPlayerTurn = false;
+      }
+    }
 
-          if (isPlayerFirst)
-          {
-            isX = true;
-            isXTurn = true;
-            isPlayerTurn = true;
-            break;
-          }
+    #endregion
 
-          isPlayerTurn = false;
-          break;
+    #region Hàm dựng COM vs COM
+
+    public MainForm(GameMode gameType, int depth)
+    {
+      InitializeComponent();
+      caroBoard = new Board();
+      movedBtns = new List<Button>();
+
+      this.gameType = gameType;
+      this.depth = depth;
+      this.isPlayerFirst = false;
+      playerOneNameTxt.Text = "MAY MOT";
+      playerTwoNameTxt.Text = "MAY HAI";
+
+      aiStartFirst = !isPlayerFirst;
+      isX = false;
+      isXTurn = false;
+
+      if (isPlayerFirst)
+      {
+        isX = true;
+        isXTurn = true;
+        isPlayerTurn = true;
+      } else
+      {
+        isPlayerTurn = false;
       }
     }
 
@@ -97,6 +128,8 @@ namespace Caro_UDTM
 
       playerOneNameTxt.Text = playerOneName;
       playerTwoNameTxt.Text = playerTwoName;
+      pictureBox1.Image = GameConstant.PlayerOneAvater;
+      pictureBox2.Image = GameConstant.PlayerTwoAvatar;
     }
 
     #endregion
@@ -105,42 +138,37 @@ namespace Caro_UDTM
 
     public MainForm(GameMode gameType, bool isHost, string ipAddress = null)
     {
-      InitializeComponent();
-
-      caroBoard = new Board();
-      listBtn = new List<Button>();
-
-      this.gameType = gameType;
-      this.isHost = isHost ? 0 : 1;
-
-      messageReceiver.DoWork += messageReceiver_DoWork;
-      CheckForIllegalCrossThreadCalls = false;
-
-      isX = false;
-      isX = false;
-
-      if (isHost)
+      try
       {
-        server = new TcpListener(System.Net.IPAddress.Any, 5732);
-        server.Start();
+        InitializeComponent();
 
-        socket = server.AcceptSocket();
-      }
-      else
-      {
-        try
+        caroBoard = new Board();
+        listBtn = new List<Button>();
+
+        this.gameType = gameType;
+        this.isHost = isHost ? 0 : 1;
+
+        messageReceiver.DoWork += messageReceiver_DoWork;
+        CheckForIllegalCrossThreadCalls = false;
+
+        isX = false;
+
+        if (isHost)
+        {
+          server = new TcpListener(System.Net.IPAddress.Any, 5732);
+          server.Start();
+          socket = server.AcceptSocket();
+        }
+        else
         {
           client = new TcpClient(ipAddress, 5732);
           socket = client.Client;
           messageReceiver.RunWorkerAsync();
         }
-        catch (Exception ex)
-        {
-          MessageBox.Show(ex.Message);
-          this.Close();
-          return;
-        }
-
+      } catch
+      {
+        MessageBox.Show("OOPS!!! SOMETHING IS WRONG");
+        Close();
       }
     }
 
@@ -150,12 +178,9 @@ namespace Caro_UDTM
 
     private void messageReceiver_DoWork(object sender, DoWorkEventArgs e)
     {
-      if (checkWinner() == 0)
-      {
-        freezeBoard();
-        receiveMove();
-        unfreezeBoard();
-      }
+      freezeBoard();
+      receiveMove();
+      unfreezeBoard();
     }
 
     private void receiveMove()
@@ -174,11 +199,18 @@ namespace Caro_UDTM
       renderBoardLayout();
       moveStack = new Stack<Button>();
 
+      if (aiStartFirst && this.gameType == GameMode.ComCom)
+      {
+        worker = new Thread(new ThreadStart(doSomeThing));
+        worker.IsBackground = true;
+        worker.Start();
+        return;
+      }
+
       if (aiStartFirst)
       {
         int midMove = GameConstant.ROWS / 2;
         TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
-        Button btn = (Button)test.Controls[midMove];
         playMove(new Point(midMove, midMove));
       }
 
@@ -186,6 +218,27 @@ namespace Caro_UDTM
     }
 
     #endregion
+
+    private void doSomeThing()
+    {
+      int xMove = new Random().Next(GameConstant.ROWS);
+      int yMove = new Random().Next(GameConstant.COLS);
+      TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
+      //Button btn = (Button)test.Controls[xMove];
+      playMove(new Point(xMove, yMove));
+    }
+
+    private void centerLabel()
+    {
+      int playerOneX = (panel2.Size.Width - playerOneNameTxt.Size.Width) / 2;
+      int playerTwoX = (panel2.Size.Width - playerTwoNameTxt.Size.Width) / 2;
+      int xLabel = (panel2.Size.Width - label2.Size.Width) / 2;
+
+      playerOneNameTxt.Location = new Point(playerOneX, playerOneNameTxt.Location.Y);
+      playerTwoNameTxt.Location = new Point(playerTwoX, playerTwoNameTxt.Location.Y);
+      label2.Location = new Point(xLabel, label2.Location.Y);
+      label3.Location = new Point(xLabel, label3.Location.Y);
+    }
 
     #region Hàm thực hiện vẽ giao diện bàn cờ
 
@@ -299,9 +352,8 @@ namespace Caro_UDTM
           Point coordition = (Point)btn.Tag;
           byte[] buffer = { (byte)coordition.X, (byte)coordition.Y, (byte)isHost };
 
-          playMove(coordition, isHost);
           socket.Send(buffer);
-
+          playMove(coordition, isHost);
           messageReceiver.RunWorkerAsync();
 
           btn.Click -= btn_click;
@@ -309,7 +361,7 @@ namespace Caro_UDTM
         }
         catch (Exception ex)
         {
-          MessageBox.Show(ex.Message);
+          MessageBox.Show("NOT YOUR TURN");
           return;
         }
       }
@@ -333,7 +385,6 @@ namespace Caro_UDTM
         {
           showWinnerDialog(playerTwoNameTxt.Text);
         }
-
       }
 
       if (gameType == GameMode.OnePlayer && winner == 0)
@@ -356,8 +407,6 @@ namespace Caro_UDTM
         isPlayerTurn = true;
       }
 
-      //caroBoard.printBoard();
-
       //Console.WriteLine("\n========= DIEM DANH GIA =========");
       //Console.WriteLine("X: " + GameLogic.getScore(caroBoard, true, true) + " O: " + GameLogic.getScore(caroBoard, false, true));
     }
@@ -368,19 +417,47 @@ namespace Caro_UDTM
 
     private void showWinnerDialog(string userName)
     {
-      DialogResult result = MessageBox.Show(userName + " IS A WINNER", "WINNER", MessageBoxButtons.OKCancel);
-
-      if (result == DialogResult.OK)
+      try
       {
-        clearBoardLayout();
-        caroBoard = new Board();
+        if (this.gameType == GameMode.ComCom)
+        {
+          this.Invoke((MethodInvoker)delegate
+          {
+            //MessageBox.Show(userName + " IS A WINNER", "WINNER");
+            // close the form on the forms thread
+            worker.Abort();
 
+            if (userName != "HOA")
+            {
+              MessageBox.Show(userName + " IS A WINNER", "WINNER");
+            }
+            else
+            {
+              MessageBox.Show("THERE IS NO WINNER");
+            }
+
+            Close();
+          });
+
+          return;
+        }
+
+        DialogResult result = MessageBox.Show(userName + " IS A WINNER", "WINNER", MessageBoxButtons.OKCancel);
+
+        if (result == DialogResult.OK)
+        {
+          clearBoardLayout();
+          caroBoard = new Board();
+
+          return;
+        }
+
+        this.Close();
         return;
+      } catch
+      {
+
       }
-
-      this.Close();
-
-      return;
     }
 
     #endregion
@@ -408,8 +485,8 @@ namespace Caro_UDTM
       TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
       Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
       btn.BackColor = GameConstant.buttonClickColor;
+      //Console.WriteLine("O / X: " + GameLogic.evaluateBoardForO(caroBoard, isXTurn).ToString());
       movedBtns.Add(btn);
-      //MessageBox.Show(point.X.ToString() + " " + point.Y.ToString());
 
       if (moveStack.Count > 0)
       {
@@ -434,7 +511,69 @@ namespace Caro_UDTM
         isX = true;
       }
 
+      if (this.gameType != GameMode.ComCom)
+      {
+        if (GameConstant.soundEffectFlag)
+        {
+          GameConstant.mPlayer.Open(new Uri(GameConstant.soundEffectPath));
+          GameConstant.mPlayer.Play();
+        }
+      }
+
       btn.Click -= btn_click;
+
+      if (this.gameType == GameMode.ComCom)
+      {
+        Thread.Sleep(300);
+        int winner = checkWinner();
+
+        if (winner != 0)
+        {
+          if (winner == 1)
+          {
+            showWinnerDialog(playerOneNameTxt.Text);
+          }
+          else if (winner == 2)
+          {
+            showWinnerDialog(playerTwoNameTxt.Text);
+          }
+          else if (winner == 0)
+          {
+            showWinnerDialog("HOA");
+          }
+        }
+        else
+        {
+          TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
+          int[] bestMove = GameLogic.calculateNextMove(depth, caroBoard);
+
+          if (bestMove == null)
+          {
+            showWinnerDialog("HOA");
+          }
+
+          Point comPoint = new Point(bestMove[0], bestMove[1]);
+
+          playMove(comPoint);
+
+          winner = checkWinner();
+
+          if (winner == 1)
+          {
+            showWinnerDialog(playerTwoNameTxt.Text);
+          }
+          else if (winner == 2)
+          {
+            showWinnerDialog(playerTwoNameTxt.Text);
+          }
+          else if (winner == 0)
+          {
+            showWinnerDialog("HOA");
+          }
+
+          isPlayerTurn = true;
+        }
+      }
 
       return true;
     }
@@ -472,6 +611,20 @@ namespace Caro_UDTM
 
       btn.Click -= btn_click;
 
+      int winner = checkWinner();
+
+      if (winner == 1)
+      {
+        MessageBox.Show("PLAYER ONE WIN");
+        Close();
+      }
+
+      else if (winner == 2)
+      {
+        MessageBox.Show("PLAYER TWO WIN");
+        Close();
+      }
+
       return true;
     }
 
@@ -488,29 +641,20 @@ namespace Caro_UDTM
       {
         server.Stop();
       }
-
-      //controlMusic(2);
     }
 
     private void freezeBoard()
     {
       foreach (Button btn in listBtn)
       {
-        if (btn.Image == null) btn.MouseHover += btn_MouseHover;
+        if (btn.Image == null) btn.Enabled = false;
       }
-    }
-
-    private void btn_MouseHover(object sender, EventArgs e)
-    {
-      Button btn = (Button)sender;
-      btn.Enabled = false;
     }
 
     private void unfreezeBoard()
     {
       foreach (Button btn in listBtn)
       {
-        btn.MouseHover -= btn_MouseHover;
         btn.Enabled = true;
       }
     }
@@ -560,5 +704,10 @@ namespace Caro_UDTM
     }
 
     #endregion
+
+    private void settingsBtn_Click(object sender, EventArgs e)
+    {
+      new SettingForm().ShowDialog();
+    }
   }
 }

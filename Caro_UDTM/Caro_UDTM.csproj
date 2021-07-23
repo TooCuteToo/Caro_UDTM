@@ -38,6 +38,7 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\NUnit.Framework-3.13.1\bin\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +52,7 @@
     <Reference Include="Transitions">
       <HintPath>C:\Users\Admin\Downloads\Transitions.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Board.cs" />
@@ -68,6 +70,12 @@
     </Compile>
     <Compile Include="LANForm.Designer.cs">
       <DependentUpon>LANForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaderboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaderboardForm.Designer.cs">
+      <DependentUpon>LeaderboardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -95,6 +103,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LANForm.resx">
       <DependentUpon>LANForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaderboardForm.resx">
+      <DependentUpon>LeaderboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -120,6 +137,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
@@ -145,6 +165,15 @@
     <None Include="Resources\menu_o_icon.png" />
     <None Include="Resources\menu_x_icon.png" />
     <None Include="Resources\music.png" />
+    <Content Include="Resources\ai.png" />
+    <None Include="Resources\ai1.png" />
+    <None Include="Resources\astronaut.png" />
+    <Content Include="Resources\background.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\man.png" />
+    <None Include="Resources\man1.png" />
+    <None Include="Resources\ninja.png" />
     <Content Include="Resources\o.png" />
     <None Include="Resources\x1.png" />
     <None Include="Resources\o1.png" />
@@ -154,7 +183,21 @@
     <None Include="Resources\tutorial_3.PNG" />
     <None Include="Resources\tutorial_4.PNG" />
     <None Include="Resources\tutorial_5.PNG" />
+    <Content Include="Resources\sound_effect.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

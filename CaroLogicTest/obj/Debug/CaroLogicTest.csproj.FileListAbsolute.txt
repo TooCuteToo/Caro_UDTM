@@ -16,3 +16,21 @@ C:\Users\Admin\Desktop\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.csproj.Co
 C:\Users\Admin\Desktop\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.csproj.CopyComplete
 C:\Users\Admin\Desktop\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.dll
 C:\Users\Admin\Desktop\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\OrderedTest1.orderedtest
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\CaroLogicTest.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\CaroLogicTest.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Caro_UDTM.exe
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Castle.Core.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\TestStack.White.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Transitions.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Caro_UDTM.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Caro_UDTM.exe.config
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\Castle.Core.xml
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\TestStack.White.pdb
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\bin\Debug\TestStack.White.xml
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.csprojAssemblyReference.cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.csproj.CoreCompileInputs.cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.csproj.CopyComplete
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.dll
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\CaroLogicTest\obj\Debug\CaroLogicTest.pdb

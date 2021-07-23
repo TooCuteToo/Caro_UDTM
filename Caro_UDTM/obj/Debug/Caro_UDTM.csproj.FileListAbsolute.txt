@@ -7,7 +7,6 @@ D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resou
 D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
 D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
 D:\Study\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
-D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\Kisstherain-Yiruma_7x9x.wav
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
@@ -19,8 +18,6 @@ D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.r
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
 D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
-D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\bin\Debug\Transitions.dll
-D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojResolveAssemblyReference.cache
 F:\Code\UDTM\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
 F:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
 F:\Code\UDTM\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
@@ -53,3 +50,60 @@ C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CoreCompil
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CopyComplete
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
 C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+C:\Users\Admin\Desktop\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojAssemblyReference.cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojAssemblyReference.cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.HelpForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CoreCompileInputs.cache
+D:\Study\UNG DUNG THONG MINH\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CopyComplete
+G:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+G:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+G:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojResolveAssemblyReference.cache
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.HelpForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LANForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MainForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MenuForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
+G:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.Cache
+F:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+F:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+F:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojAssemblyReference.cache
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.HelpForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LANForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MainForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MenuForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.cache
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CoreCompileInputs.cache
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CopyComplete
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+F:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+D:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe.config
+D:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.exe
+D:\Caro_UDTM\Caro_UDTM\bin\Debug\Caro_UDTM.pdb
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.HelpForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LANForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MainForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.MenuForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.PromptForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.Properties.Resources.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.StartForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.GenerateResource.cache
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.exe
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.SettingForm.resources
+D:\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\sound_effect.wav
+D:\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\background.wav
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LeaderboardForm.resources
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.ResolveComReference.cache
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojAssemblyReference.cache
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CoreCompileInputs.cache
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CopyComplete

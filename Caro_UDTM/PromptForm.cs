@@ -1,14 +1,8 @@
 ﻿using Caro_UDTM.Components;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Caro_UDTM
@@ -33,69 +27,14 @@ namespace Caro_UDTM
 
       initLabel();
       initTextBox();
-
       initDifficulty();
       initButton();
-
       initRadio();
 
-      if (gameType == GameMode.OnePlayer)
-      {
-        label1.Text = "NAME:";
-        label2.Text = "DIFFICULTY:";
-
-        textBox1.Name = "nameInputTxt";
-        textBox1.KeyPress += textBox_KeyPress;
-        this.Controls.Add(textBox1);
-
-        comboBox.Name = "difficutyCB";
-        this.Controls.Add(comboBox);
-
-        this.Controls.Add(label1);
-        this.Controls.Add(label2);
-
-        this.Controls.Add(okBtn);
-      }
-      else if (gameType == GameMode.TwoPlayer)
-      {
-        label1.Text = "NAME 1:";
-        label2.Text = "NAME 2:";
-
-        this.Controls.Add(label1);
-        this.Controls.Add(label2);
-
-        textBox1.Name = "playerOneNameTxt";
-        textBox2.Name = "playerTwoNameTxt";
-
-        textBox1.KeyPress += textBox_KeyPress;
-        textBox2.KeyPress += textBox_KeyPress;
-
-        this.Controls.Add(textBox1);
-
-        this.Controls.Add(textBox2);
-
-        this.Controls.Add(okBtn);
-      }
-      else
-      {
-        string myIP = Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString();
-
-        label1.Font = GameConstant.mainFont;
-        label1.Location = new Point(20, 65);
-        label1.Text = "IP ADDRESS:";
-
-        textBox1.Name = "ipTxt";
-        textBox1.Text = myIP;
-        textBox1.Enabled = false;
-
-        this.Controls.Add(label1);
-        this.Controls.Add(textBox1);
-
-        this.Controls.Add(okBtn);
-
-        this.Controls.Add(hostRadio);
-        this.Controls.Add(connectRadio);
-      }
+      if (gameType == GameMode.OnePlayer) initOnePlayerGameMode();
+      else if (gameType == GameMode.TwoPlayer) initTwoPlayerGameMode();
+      else if (gameType == GameMode.ComCom) initComComGameMode();
+      else initLanGameMode();
     }
 
     private void initDifficulty()
@@ -111,7 +50,6 @@ namespace Caro_UDTM
       comboBox.Items.Add("EASY");
       comboBox.Items.Add("MEDIUM");
       comboBox.Items.Add("HARD");
-
       comboBox.SelectedIndex = 0;
     }
 
@@ -197,7 +135,7 @@ namespace Caro_UDTM
     {
       if (this.ShowDialog() == DialogResult.OK)
       {
-        if (textBox1.Text == "") textBox1.Text = "NGUYEN VAN A";
+        if (textBox1.Text == "") textBox1.Text = "BAO";
 
         return new object[2] { textBox1.Text, (string)comboBox.SelectedItem };
       }
@@ -209,14 +147,24 @@ namespace Caro_UDTM
     {
       if (this.ShowDialog() == DialogResult.OK)
       {
-        if (textBox1.Text == "") textBox1.Text = "NGUYEN VAN A";
+        if (textBox1.Text == "") textBox1.Text = "BAO";
 
-        if (textBox2.Text == "") textBox2.Text = "NGUYEN VAN B";
+        if (textBox2.Text == "") textBox2.Text = "TU";
 
         return new object[2] { textBox1.Text, textBox2.Text };
       }
 
-      return new object[2] { null, "NGUYEN VAN B" };
+      return new object[2] { null, "TU" };
+    }
+
+    public string showDialog3()
+    {
+      if (this.ShowDialog() == DialogResult.OK)
+      {
+        return (string)comboBox.SelectedItem;
+      }
+
+      return null;
     }
 
     private void lanBtn_click(object sender, EventArgs e)
@@ -244,10 +192,94 @@ namespace Caro_UDTM
     private void textBox_KeyPress(object sender, KeyPressEventArgs e)
     {
       var regex = new Regex(@"[^a-zA-Z\s]");
+      TextBox textBox = (TextBox)sender;
       if (regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
       {
         e.Handled = true;
       }
+    }
+
+    private void initTwoPlayerGameMode()
+    {
+      label1.Text = "NAME 1:";
+      label2.Text = "NAME 2:";
+
+      this.Controls.Add(label1);
+      this.Controls.Add(label2);
+
+      textBox1.Name = "playerOneNameTxt";
+      textBox2.Name = "playerTwoNameTxt";
+
+      textBox1.MaxLength = 10;
+      textBox2.MaxLength = 10;
+
+      textBox1.Text = "BAO";
+      textBox2.Text = "TU";
+
+      textBox1.KeyPress += textBox_KeyPress;
+      textBox2.KeyPress += textBox_KeyPress;
+
+      this.Controls.Add(textBox1);
+      this.Controls.Add(textBox2);
+      this.Controls.Add(okBtn);
+    }
+
+    private void initOnePlayerGameMode()
+    {
+      label1.Text = "NAME:";
+      label2.Text = "DIFFICULTY:";
+
+      textBox1.Name = "nameInputTxt";
+      textBox1.KeyPress += textBox_KeyPress;
+      textBox1.MaxLength = 10;
+      textBox1.Text = "BAO";
+      this.Controls.Add(textBox1);
+
+      comboBox.Name = "difficutyCB";
+      this.Controls.Add(comboBox);
+      this.Controls.Add(label1);
+      this.Controls.Add(label2);
+      this.Controls.Add(okBtn);
+    }
+
+    private void initComComGameMode()
+    {
+      label1.Text = "NAME: ";
+      label2.Text = "DIFFICULTY:";
+
+      textBox1.Name = "nameInputTxt";
+      textBox1.KeyPress += textBox_KeyPress;
+      textBox1.MaxLength = 10;
+      textBox1.Text = "COMPUTER";
+
+      comboBox.Name = "difficutyCB";
+
+      this.Controls.Add(label1);
+      this.Controls.Add(label2);
+      this.Controls.Add(textBox1);
+      this.Controls.Add(comboBox);
+      this.Controls.Add(okBtn);
+    }
+
+    private void initLanGameMode()
+    {
+      string myIP = Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString();
+
+      label1.Font = GameConstant.mainFont;
+      label1.Location = new Point(20, 65);
+      label1.Text = "IP ADDRESS:";
+
+      textBox1.Name = "ipTxt";
+      textBox1.Text = myIP;
+      textBox1.Enabled = false;
+
+      this.Controls.Add(label1);
+      this.Controls.Add(textBox1);
+
+      this.Controls.Add(okBtn);
+
+      this.Controls.Add(hostRadio);
+      this.Controls.Add(connectRadio);
     }
 
   }

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using Transitions;
 
 namespace Caro_UDTM
@@ -19,10 +21,56 @@ namespace Caro_UDTM
     public MenuForm()
     {
       InitializeComponent();
+
+      if (File.Exists(GameConstant.settingPath))
+      {
+        loadSetting();
+        if (GameConstant.backgroundFlag)
+        {
+          GameConstant.backgroundMusic.PlayLooping();
+        }
+      }
+      else
+      {
+        GameConstant.backgroundMusic.PlayLooping();
+      }
+
       pictureBox1.Image = GameConstant.menuImage[new Random().Next(0, 2)];
 
       timer1.Interval = 1000;
       timer1.Start();
+    }
+
+    private void loadSetting()
+    {
+      using (StreamReader sr = File.OpenText(GameConstant.settingPath))
+      {
+        string s;
+        int i = 0;
+        bool[] settings = new bool[]
+        {
+          false, false
+        };
+
+        while ((s = sr.ReadLine()) != null)
+        {
+          bool setting = bool.Parse(s);
+          settings[i] = setting;
+          i++;
+        }
+
+        for (int j = 0; j < settings.Length; ++j)
+        {
+          if (j == 0)
+          {
+            GameConstant.soundEffectFlag = settings[j];
+          }
+          else
+          {
+            GameConstant.backgroundFlag = settings[j];
+          }
+        }
+      }
     }
 
     private void startGameBtn_Click(object sender, EventArgs e)
@@ -174,6 +222,26 @@ namespace Caro_UDTM
     private void multiPlayerBtn_Click(object sender, EventArgs e)
     {
       new PromptForm("CARO", GameMode.LAN, this).showDialog();
+    }
+
+    private void comComBtn_Click(object sender, EventArgs e)
+    {
+      prompt = new PromptForm("COM VS COM", GameMode.ComCom, this);
+      string difficulty = prompt.showDialog3();
+
+      if (difficulty == null) return;
+
+      MainForm game = new MainForm(GameMode.ComCom, getDifficulty(difficulty));
+      Visible = false;
+      game.ShowDialog();
+      Visible = true;
+    }
+
+    private void settingBtn_Click(object sender, EventArgs e)
+    {
+      Visible = false;
+      new SettingForm().ShowDialog();
+      Visible = true;
     }
   }
 }
