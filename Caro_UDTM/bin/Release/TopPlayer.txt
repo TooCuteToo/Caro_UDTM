@@ -1,0 +1,9 @@
+TU - 50
+BAO - 80
+TIEN - 20
+THANH - 10
+PHU - 20
+TUNG - 30
+LONG - 20
+THIEN - 10
+TI - 10

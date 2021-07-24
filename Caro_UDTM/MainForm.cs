@@ -762,6 +762,8 @@ namespace Caro_UDTM
           Point loadPoint = new Point(point / GameConstant.COLS, point % GameConstant.COLS);
           playMove(loadPoint);
         }
+
+        sr.Close();
       }
       catch
       {
