@@ -184,20 +184,9 @@ namespace Caro_UDTM
 
     private void leaderBtn_Click(object sender, EventArgs e)
     {
-      //int iWidth;
-
-      //if (leaderBtn.Text == "LEADERBOARD")
-      //{
-      //    iWidth = 700;
-      //    leaderBtn.Text = "BACK";
-      //}
-      //else
-      //{
-      //    iWidth = 421;
-      //    leaderBtn.Text = "LEADERBOARD";
-      //}
-
-      //Transition.run(this, "Width", iWidth, new TransitionType_EaseInEaseOut(500));
+      Visible = false;
+      new LeaderBoard().ShowDialog();
+      Visible = true;
     }
 
     private void exitBtn_Click(object sender, EventArgs e)

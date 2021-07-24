@@ -35,7 +35,8 @@ namespace Caro_UDTM.Components
     public static string savePlayerFirstPath = @"./SaveGamePlayerFirst.txt";
     public static string saveAIFirstPath = @"./SaveGameAiFirst.txt";
     public static string saveTwoPlayerPath = @"./SaveGameTwoPlayer.txt";
-    public static string saveComComPath = @"./SaveGameComCom.txt";
+    public static string saveLanPath = @"./SaveGameLAN.txt";
+    public static string topPlayer = @"./TopPlayer.txt";
 
     public static MediaPlayer mPlayer = new MediaPlayer();
 

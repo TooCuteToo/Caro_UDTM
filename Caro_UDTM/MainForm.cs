@@ -20,6 +20,7 @@ namespace Caro_UDTM
     private Stack<Button> moveStack;
     private List<Button> listBtn;
     private List<Button> movedBtns;
+    private List<Player> players;
 
     #region Thuộc tính của người
 
@@ -59,15 +60,18 @@ namespace Caro_UDTM
       InitializeComponent();
       caroBoard = new Board();
       movedBtns = new List<Button>();
+      players = readLeaderboard();
       centerLabel();
 
       this.gameType = gameType;
-      this.userName = userName;
+      this.userName = userName.ToUpper();
       this.depth = depth;
       this.isPlayerFirst = isPlayerFirst;
       playerTwoNameTxt.Text = "MAY";
+      playerOneNameTxt.Text = this.userName;
       pictureBox1.Image = GameConstant.PlayerOneAvater;
       pictureBox2.Image = GameConstant.AIAvater;
+      initTitleLB();
 
       aiStartFirst = !isPlayerFirst;
       isX = false;
@@ -100,6 +104,7 @@ namespace Caro_UDTM
 
       playerOneNameTxt.Text = "MAY MOT";
       playerTwoNameTxt.Text = "MAY HAI";
+      initTitleLB();
 
       aiStartFirst = !isPlayerFirst;
       isX = false;
@@ -126,12 +131,15 @@ namespace Caro_UDTM
 
       movedBtns = new List<Button>();
       caroBoard = new Board();
+      players = readLeaderboard();
       this.gameType = gameType;
 
-      playerOneNameTxt.Text = playerOneName;
-      playerTwoNameTxt.Text = playerTwoName;
+      playerOneNameTxt.Text = playerOneName.ToUpper();
+      playerTwoNameTxt.Text = playerTwoName.ToUpper();
       pictureBox1.Image = GameConstant.PlayerOneAvater;
       pictureBox2.Image = GameConstant.PlayerTwoAvatar;
+
+      initTitleLB();
     }
 
     #endregion
@@ -146,7 +154,10 @@ namespace Caro_UDTM
 
         caroBoard = new Board();
         listBtn = new List<Button>();
-
+        players = readLeaderboard();
+        saveBtn.Enabled = false;
+        loadBtn.Enabled = false;
+        
         this.gameType = gameType;
         this.isHost = isHost ? 0 : 1;
 
@@ -231,12 +242,13 @@ namespace Caro_UDTM
     {
       int playerOneX = (panel2.Size.Width - playerOneNameTxt.Size.Width) / 2;
       int playerTwoX = (panel2.Size.Width - playerTwoNameTxt.Size.Width) / 2;
-      int xLabel = (panel2.Size.Width - label2.Size.Width) / 2;
+      int xLabel = (panel2.Size.Width - playerTwoTitleLB.Size.Width) / 2;
 
       playerOneNameTxt.Location = new Point(playerOneX, playerOneNameTxt.Location.Y);
       playerTwoNameTxt.Location = new Point(playerTwoX, playerTwoNameTxt.Location.Y);
-      label2.Location = new Point(xLabel, label2.Location.Y);
-      label3.Location = new Point(xLabel, label3.Location.Y);
+
+      playerTwoTitleLB.Location = new Point(xLabel, playerTwoTitleLB.Location.Y);
+      playerOneTitleLB.Location = new Point(xLabel, playerOneTitleLB.Location.Y);
     }
 
     #region Hàm thực hiện vẽ giao diện bàn cờ
@@ -378,6 +390,7 @@ namespace Caro_UDTM
         if (gameType == GameMode.OnePlayer && winner == 2 || winner == 1)
         {
           showWinnerDialog(playerOneNameTxt.Text);
+          addToLeaderboard(playerOneNameTxt.Text);
         }
 
         else if (winner == 2)
@@ -673,7 +686,7 @@ namespace Caro_UDTM
             btn.Image = null;
             caroBoard.clearMove(point.X, point.Y);
             //caroBoard.printBoard();
-            if (moveStack.Peek() != null)
+            if (moveStack.Count >= 2)
             {
               moveStack.Peek().BackColor = GameConstant.buttonClickColor;
             }
@@ -688,13 +701,11 @@ namespace Caro_UDTM
           btn.BackColor = GameConstant.boardColor;
           btn.Click += btn_click;
           Point point = (Point)btn.Tag;
-
           btn.Image = null;
-
           caroBoard.clearMove(point.X, point.Y);
           //caroBoard.printBoard();
           isX = !isX;
-          if (moveStack.Peek() != null)
+          if (moveStack.Count >= 1)
           {
             moveStack.Peek().BackColor = GameConstant.buttonClickColor;
           }
@@ -705,6 +716,8 @@ namespace Caro_UDTM
     }
 
     #endregion
+
+    #region Save, Load, Setting, Leaderboard
 
     private void settingsBtn_Click(object sender, EventArgs e)
     {
@@ -725,10 +738,6 @@ namespace Caro_UDTM
         else if (gameType == GameMode.TwoPlayer)
         {
           sr = File.OpenText(GameConstant.saveTwoPlayerPath);
-        }
-        else if (gameType == GameMode.ComCom)
-        {
-          sr = File.OpenText(GameConstant.saveComComPath);
         }
 
         clearBoardLayout();
@@ -753,7 +762,8 @@ namespace Caro_UDTM
           Point loadPoint = new Point(point / GameConstant.COLS, point % GameConstant.COLS);
           playMove(loadPoint);
         }
-      } catch
+      }
+      catch
       {
         MessageBox.Show("CANT FIND SAVE!!!");
         return;
@@ -785,13 +795,6 @@ namespace Caro_UDTM
         {
           writeToFile(sw);
         }
-      } 
-      else if (gameType == GameMode.ComCom)
-      {
-        using (StreamWriter sw = File.CreateText(GameConstant.saveComComPath))
-        {
-          writeToFile(sw);
-        }
       }
 
       MessageBox.Show("YOUR GAME IS SAVED");
@@ -806,5 +809,139 @@ namespace Caro_UDTM
         if (btn.Image == GameConstant.O_IMG) sw.WriteLine(savePoint.X * GameConstant.COLS + savePoint.Y + " " + "O");
       }
     }
+
+    private void addToLeaderboard(string userName)
+    {
+      Player player = players.FirstOrDefault(item => item.Name == userName);
+
+      if (player != null)
+      {
+        string str = player.Name + " - " + player.Score.ToString();
+        player.Score += 10;
+        string newStr = player.Name + " - " + player.Score.ToString();
+        File.WriteAllText(GameConstant.topPlayer, File.ReadAllText(GameConstant.topPlayer).Replace(str, newStr));
+      }
+      else
+      {
+        using (StreamWriter sw = File.AppendText(GameConstant.topPlayer))
+        {
+          Player newPlayer = new Player(userName, 10);
+          players.Add(newPlayer);
+          sw.WriteLine(newPlayer.Name + " - " + newPlayer.Score.ToString());
+        }
+      }
+
+      players = readLeaderboard();
+      initTitleLB();
+    }
+
+    private List<Player> readLeaderboard()
+    {
+      using (StreamReader sr = File.OpenText(GameConstant.topPlayer))
+      {
+        List<Player> players = new List<Player>();
+        string s;
+        int i = 1;
+        while ((s = sr.ReadLine()) != null && i < 8)
+        {
+          string[] str = s.Split('-');
+          players.Add(new Player(str[0].TrimStart().TrimEnd(), int.Parse(str[1].TrimEnd())));
+        }
+
+        return players.OrderByDescending(item => item.Score).ToList();
+      }
+    }
+
+    private void initTitleLB()
+    {
+      if (gameType == GameMode.OnePlayer)
+      {
+        if (depth == 2) playerTwoTitleLB.Text = "SILVER";
+        else if (depth == 3) playerTwoTitleLB.Text = "PLATINUM";
+        else if (depth == 4) playerTwoTitleLB.Text = "DIAMOND";
+
+        getPlayerOneTitle(playerOneNameTxt.Text);
+        
+      }
+      else if (gameType == GameMode.TwoPlayer || gameType == GameMode.LAN)
+      {
+        getPlayerOneTitle(playerOneNameTxt.Text);
+        getPlayerTwoTitle(playerTwoNameTxt.Text);
+      }
+      else
+      {
+        if (depth == 2)
+        {
+          playerOneTitleLB.Text = "SILVER";
+          playerTwoTitleLB.Text = "SILVER";
+        }
+        else if (depth == 3)
+        {
+          playerOneTitleLB.Text = "PLATINUM";
+          playerTwoTitleLB.Text = "PLATINUM";
+        }
+        else if (depth == 4)
+        {
+          playerOneTitleLB.Text = "DIAMOND";
+          playerTwoTitleLB.Text = "DIAMOND";
+        }
+      }
+    }
+
+    private void getPlayerOneTitle(string userName)
+    {
+      Player player = players.FirstOrDefault(item => item.Name == userName);
+
+      if (player != null)
+      {
+        playerOneScoreTxt.Text = player.Score.ToString();
+
+        if (player.Score >= 50)
+        {
+          playerOneTitleLB.Text = "DIAMOND";
+        }
+        else if (player.Score >= 30)
+        {
+          playerOneTitleLB.Text = "PLATINUM";
+        }
+        else
+        {
+          playerOneTitleLB.Text = "SILVER";
+        }
+      }
+      else
+      {
+        playerOneTitleLB.Text = "SILVER";
+      }
+    }
+
+    private void getPlayerTwoTitle(string userName)
+    {
+      Player player = players.FirstOrDefault(item => item.Name == userName);
+
+      if (player != null)
+      {
+        playerTwoScoreTxt.Text = player.Score.ToString();
+
+        if (player.Score >= 50)
+        {
+          playerTwoTitleLB.Text = "DIAMOND";
+        }
+        else if (player.Score >= 30)
+        {
+          playerTwoTitleLB.Text = "PLATINUM";
+        }
+        else
+        {
+          playerTwoTitleLB.Text = "SILVER";
+        }
+      }
+      else
+      {
+        playerTwoTitleLB.Text = "SILVER";
+      }
+    }
+
+    #endregion
   }
 }

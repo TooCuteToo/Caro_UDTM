@@ -102,8 +102,8 @@ D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.pdb
 D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.SettingForm.resources
 D:\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\sound_effect.wav
 D:\Caro_UDTM\Caro_UDTM\bin\Debug\Resources\background.wav
-D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LeaderboardForm.resources
 D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.ResolveComReference.cache
 D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csprojAssemblyReference.cache
 D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CoreCompileInputs.cache
 D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.csproj.CopyComplete
+D:\Caro_UDTM\Caro_UDTM\obj\Debug\Caro_UDTM.LeaderBoard.resources

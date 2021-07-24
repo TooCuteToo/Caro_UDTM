@@ -30,17 +30,19 @@
         {
       this.mainTablePanel = new System.Windows.Forms.TableLayoutPanel();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.loadBtn = new System.Windows.Forms.Button();
+      this.saveBtn = new System.Windows.Forms.Button();
       this.settingsBtn = new System.Windows.Forms.Button();
       this.button1 = new System.Windows.Forms.Button();
-      this.label3 = new System.Windows.Forms.Label();
+      this.playerOneTitleLB = new System.Windows.Forms.Label();
       this.playerOneNameTxt = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.label2 = new System.Windows.Forms.Label();
+      this.playerTwoTitleLB = new System.Windows.Forms.Label();
       this.playerTwoNameTxt = new System.Windows.Forms.Label();
       this.pictureBox2 = new System.Windows.Forms.PictureBox();
-      this.saveBtn = new System.Windows.Forms.Button();
-      this.loadBtn = new System.Windows.Forms.Button();
+      this.playerOneScoreTxt = new System.Windows.Forms.Label();
+      this.playerTwoScoreTxt = new System.Windows.Forms.Label();
       this.mainTablePanel.SuspendLayout();
       this.panel2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,7 +75,8 @@
       this.panel2.Controls.Add(this.saveBtn);
       this.panel2.Controls.Add(this.settingsBtn);
       this.panel2.Controls.Add(this.button1);
-      this.panel2.Controls.Add(this.label3);
+      this.panel2.Controls.Add(this.playerOneScoreTxt);
+      this.panel2.Controls.Add(this.playerOneTitleLB);
       this.panel2.Controls.Add(this.playerOneNameTxt);
       this.panel2.Controls.Add(this.pictureBox1);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,12 +86,40 @@
       this.panel2.Size = new System.Drawing.Size(221, 615);
       this.panel2.TabIndex = 1;
       // 
+      // loadBtn
+      // 
+      this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+      this.loadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.loadBtn.ForeColor = System.Drawing.Color.Black;
+      this.loadBtn.Location = new System.Drawing.Point(54, 450);
+      this.loadBtn.Margin = new System.Windows.Forms.Padding(2);
+      this.loadBtn.Name = "loadBtn";
+      this.loadBtn.Size = new System.Drawing.Size(114, 37);
+      this.loadBtn.TabIndex = 3;
+      this.loadBtn.Text = "LOAD";
+      this.loadBtn.UseVisualStyleBackColor = false;
+      this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+      // 
+      // saveBtn
+      // 
+      this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+      this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.saveBtn.ForeColor = System.Drawing.Color.Black;
+      this.saveBtn.Location = new System.Drawing.Point(54, 328);
+      this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
+      this.saveBtn.Name = "saveBtn";
+      this.saveBtn.Size = new System.Drawing.Size(114, 37);
+      this.saveBtn.TabIndex = 3;
+      this.saveBtn.Text = "SAVE";
+      this.saveBtn.UseVisualStyleBackColor = false;
+      this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+      // 
       // settingsBtn
       // 
       this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.settingsBtn.ForeColor = System.Drawing.Color.Black;
-      this.settingsBtn.Location = new System.Drawing.Point(47, 335);
+      this.settingsBtn.Location = new System.Drawing.Point(54, 389);
       this.settingsBtn.Margin = new System.Windows.Forms.Padding(2);
       this.settingsBtn.Name = "settingsBtn";
       this.settingsBtn.Size = new System.Drawing.Size(114, 37);
@@ -102,7 +133,7 @@
       this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.button1.ForeColor = System.Drawing.Color.Black;
-      this.button1.Location = new System.Drawing.Point(47, 267);
+      this.button1.Location = new System.Drawing.Point(54, 267);
       this.button1.Margin = new System.Windows.Forms.Padding(2);
       this.button1.Name = "button1";
       this.button1.Size = new System.Drawing.Size(114, 37);
@@ -111,28 +142,28 @@
       this.button1.UseVisualStyleBackColor = false;
       this.button1.Click += new System.EventHandler(this.button1_Click_1);
       // 
-      // label3
+      // playerOneTitleLB
       // 
-      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.ForeColor = System.Drawing.Color.White;
-      this.label3.Location = new System.Drawing.Point(53, 198);
-      this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(94, 20);
-      this.label3.TabIndex = 2;
-      this.label3.Text = "BEGINNER";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.playerOneTitleLB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerOneTitleLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerOneTitleLB.ForeColor = System.Drawing.Color.White;
+      this.playerOneTitleLB.Location = new System.Drawing.Point(2, 198);
+      this.playerOneTitleLB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerOneTitleLB.Name = "playerOneTitleLB";
+      this.playerOneTitleLB.Size = new System.Drawing.Size(217, 20);
+      this.playerOneTitleLB.TabIndex = 2;
+      this.playerOneTitleLB.Text = "SILVER";
+      this.playerOneTitleLB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // playerOneNameTxt
       // 
       this.playerOneNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.playerOneNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.playerOneNameTxt.ForeColor = System.Drawing.Color.White;
-      this.playerOneNameTxt.Location = new System.Drawing.Point(28, 163);
+      this.playerOneNameTxt.Location = new System.Drawing.Point(2, 163);
       this.playerOneNameTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.playerOneNameTxt.Name = "playerOneNameTxt";
-      this.playerOneNameTxt.Size = new System.Drawing.Size(153, 24);
+      this.playerOneNameTxt.Size = new System.Drawing.Size(217, 24);
       this.playerOneNameTxt.TabIndex = 1;
       this.playerOneNameTxt.Text = "NGUYEN VAN A";
       this.playerOneNameTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -151,7 +182,8 @@
       // 
       // panel1
       // 
-      this.panel1.Controls.Add(this.label2);
+      this.panel1.Controls.Add(this.playerTwoScoreTxt);
+      this.panel1.Controls.Add(this.playerTwoTitleLB);
       this.panel1.Controls.Add(this.playerTwoNameTxt);
       this.panel1.Controls.Add(this.pictureBox2);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,27 +193,28 @@
       this.panel1.Size = new System.Drawing.Size(222, 615);
       this.panel1.TabIndex = 2;
       // 
-      // label2
+      // playerTwoTitleLB
       // 
-      this.label2.AutoSize = true;
-      this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.ForeColor = System.Drawing.Color.White;
-      this.label2.Location = new System.Drawing.Point(59, 198);
-      this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(94, 20);
-      this.label2.TabIndex = 5;
-      this.label2.Text = "BEGINNER";
+      this.playerTwoTitleLB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerTwoTitleLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerTwoTitleLB.ForeColor = System.Drawing.Color.White;
+      this.playerTwoTitleLB.Location = new System.Drawing.Point(2, 198);
+      this.playerTwoTitleLB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerTwoTitleLB.Name = "playerTwoTitleLB";
+      this.playerTwoTitleLB.Size = new System.Drawing.Size(220, 20);
+      this.playerTwoTitleLB.TabIndex = 5;
+      this.playerTwoTitleLB.Text = "SILVER";
+      this.playerTwoTitleLB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // playerTwoNameTxt
       // 
       this.playerTwoNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.playerTwoNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.playerTwoNameTxt.ForeColor = System.Drawing.Color.White;
-      this.playerTwoNameTxt.Location = new System.Drawing.Point(17, 163);
+      this.playerTwoNameTxt.Location = new System.Drawing.Point(2, 163);
       this.playerTwoNameTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.playerTwoNameTxt.Name = "playerTwoNameTxt";
-      this.playerTwoNameTxt.Size = new System.Drawing.Size(153, 24);
+      this.playerTwoNameTxt.Size = new System.Drawing.Size(218, 24);
       this.playerTwoNameTxt.TabIndex = 4;
       this.playerTwoNameTxt.Text = "NGUYEN VAN A";
       this.playerTwoNameTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -198,33 +231,31 @@
       this.pictureBox2.TabIndex = 3;
       this.pictureBox2.TabStop = false;
       // 
-      // saveBtn
+      // playerOneScoreTxt
       // 
-      this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-      this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.saveBtn.ForeColor = System.Drawing.Color.Black;
-      this.saveBtn.Location = new System.Drawing.Point(47, 403);
-      this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
-      this.saveBtn.Name = "saveBtn";
-      this.saveBtn.Size = new System.Drawing.Size(114, 37);
-      this.saveBtn.TabIndex = 3;
-      this.saveBtn.Text = "SAVE";
-      this.saveBtn.UseVisualStyleBackColor = false;
-      this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+      this.playerOneScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerOneScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerOneScoreTxt.ForeColor = System.Drawing.Color.White;
+      this.playerOneScoreTxt.Location = new System.Drawing.Point(2, 229);
+      this.playerOneScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerOneScoreTxt.Name = "playerOneScoreTxt";
+      this.playerOneScoreTxt.Size = new System.Drawing.Size(217, 20);
+      this.playerOneScoreTxt.TabIndex = 2;
+      this.playerOneScoreTxt.Text = "0";
+      this.playerOneScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // loadBtn
+      // playerTwoScoreTxt
       // 
-      this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-      this.loadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.loadBtn.ForeColor = System.Drawing.Color.Black;
-      this.loadBtn.Location = new System.Drawing.Point(47, 471);
-      this.loadBtn.Margin = new System.Windows.Forms.Padding(2);
-      this.loadBtn.Name = "loadBtn";
-      this.loadBtn.Size = new System.Drawing.Size(114, 37);
-      this.loadBtn.TabIndex = 3;
-      this.loadBtn.Text = "LOAD";
-      this.loadBtn.UseVisualStyleBackColor = false;
-      this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+      this.playerTwoScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerTwoScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerTwoScoreTxt.ForeColor = System.Drawing.Color.White;
+      this.playerTwoScoreTxt.Location = new System.Drawing.Point(4, 229);
+      this.playerTwoScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerTwoScoreTxt.Name = "playerTwoScoreTxt";
+      this.playerTwoScoreTxt.Size = new System.Drawing.Size(220, 20);
+      this.playerTwoScoreTxt.TabIndex = 5;
+      this.playerTwoScoreTxt.Text = "0";
+      this.playerTwoScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // MainForm
       // 
@@ -243,7 +274,6 @@
       this.panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.panel1.ResumeLayout(false);
-      this.panel1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
       this.ResumeLayout(false);
 
@@ -255,15 +285,17 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label playerOneNameTxt;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label playerOneTitleLB;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label playerTwoTitleLB;
         private System.Windows.Forms.Label playerTwoNameTxt;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button settingsBtn;
     private System.Windows.Forms.Button loadBtn;
     private System.Windows.Forms.Button saveBtn;
+    private System.Windows.Forms.Label playerOneScoreTxt;
+    private System.Windows.Forms.Label playerTwoScoreTxt;
   }
 }
 
