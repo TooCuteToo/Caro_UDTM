@@ -116,7 +116,6 @@ namespace Caro_UDTM.Components
       {
         nextMove[0] = (int)bestMove[1];
         nextMove[1] = (int)bestMove[2];
-
       }
 
       else

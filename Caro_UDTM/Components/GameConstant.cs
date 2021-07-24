@@ -32,6 +32,10 @@ namespace Caro_UDTM.Components
     public static string soundEffectPath = Application.StartupPath + @"/Resources/sound_effect.wav";
     public static string backgroundMusicPath = Application.StartupPath + @"/Resources/background.wav";
     public static string settingPath = @"./Setting.txt";
+    public static string savePlayerFirstPath = @"./SaveGamePlayerFirst.txt";
+    public static string saveAIFirstPath = @"./SaveGameAiFirst.txt";
+    public static string saveTwoPlayerPath = @"./SaveGameTwoPlayer.txt";
+    public static string saveComComPath = @"./SaveGameComCom.txt";
 
     public static MediaPlayer mPlayer = new MediaPlayer();
 

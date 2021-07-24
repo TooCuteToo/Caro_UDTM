@@ -30,6 +30,7 @@
         {
       this.mainTablePanel = new System.Windows.Forms.TableLayoutPanel();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.settingsBtn = new System.Windows.Forms.Button();
       this.button1 = new System.Windows.Forms.Button();
       this.label3 = new System.Windows.Forms.Label();
       this.playerOneNameTxt = new System.Windows.Forms.Label();
@@ -38,7 +39,8 @@
       this.label2 = new System.Windows.Forms.Label();
       this.playerTwoNameTxt = new System.Windows.Forms.Label();
       this.pictureBox2 = new System.Windows.Forms.PictureBox();
-      this.settingsBtn = new System.Windows.Forms.Button();
+      this.saveBtn = new System.Windows.Forms.Button();
+      this.loadBtn = new System.Windows.Forms.Button();
       this.mainTablePanel.SuspendLayout();
       this.panel2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +69,8 @@
       // 
       // panel2
       // 
+      this.panel2.Controls.Add(this.loadBtn);
+      this.panel2.Controls.Add(this.saveBtn);
       this.panel2.Controls.Add(this.settingsBtn);
       this.panel2.Controls.Add(this.button1);
       this.panel2.Controls.Add(this.label3);
@@ -79,12 +83,26 @@
       this.panel2.Size = new System.Drawing.Size(221, 615);
       this.panel2.TabIndex = 1;
       // 
+      // settingsBtn
+      // 
+      this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+      this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.settingsBtn.ForeColor = System.Drawing.Color.Black;
+      this.settingsBtn.Location = new System.Drawing.Point(47, 335);
+      this.settingsBtn.Margin = new System.Windows.Forms.Padding(2);
+      this.settingsBtn.Name = "settingsBtn";
+      this.settingsBtn.Size = new System.Drawing.Size(114, 37);
+      this.settingsBtn.TabIndex = 3;
+      this.settingsBtn.Text = "SETTINGS";
+      this.settingsBtn.UseVisualStyleBackColor = false;
+      this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
+      // 
       // button1
       // 
       this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.button1.ForeColor = System.Drawing.Color.Black;
-      this.button1.Location = new System.Drawing.Point(40, 298);
+      this.button1.Location = new System.Drawing.Point(47, 267);
       this.button1.Margin = new System.Windows.Forms.Padding(2);
       this.button1.Name = "button1";
       this.button1.Size = new System.Drawing.Size(114, 37);
@@ -180,19 +198,33 @@
       this.pictureBox2.TabIndex = 3;
       this.pictureBox2.TabStop = false;
       // 
-      // settingsBtn
+      // saveBtn
       // 
-      this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-      this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.settingsBtn.ForeColor = System.Drawing.Color.Black;
-      this.settingsBtn.Location = new System.Drawing.Point(40, 362);
-      this.settingsBtn.Margin = new System.Windows.Forms.Padding(2);
-      this.settingsBtn.Name = "settingsBtn";
-      this.settingsBtn.Size = new System.Drawing.Size(114, 37);
-      this.settingsBtn.TabIndex = 3;
-      this.settingsBtn.Text = "SETTINGS";
-      this.settingsBtn.UseVisualStyleBackColor = false;
-      this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
+      this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+      this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.saveBtn.ForeColor = System.Drawing.Color.Black;
+      this.saveBtn.Location = new System.Drawing.Point(47, 403);
+      this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
+      this.saveBtn.Name = "saveBtn";
+      this.saveBtn.Size = new System.Drawing.Size(114, 37);
+      this.saveBtn.TabIndex = 3;
+      this.saveBtn.Text = "SAVE";
+      this.saveBtn.UseVisualStyleBackColor = false;
+      this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+      // 
+      // loadBtn
+      // 
+      this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+      this.loadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.loadBtn.ForeColor = System.Drawing.Color.Black;
+      this.loadBtn.Location = new System.Drawing.Point(47, 471);
+      this.loadBtn.Margin = new System.Windows.Forms.Padding(2);
+      this.loadBtn.Name = "loadBtn";
+      this.loadBtn.Size = new System.Drawing.Size(114, 37);
+      this.loadBtn.TabIndex = 3;
+      this.loadBtn.Text = "LOAD";
+      this.loadBtn.UseVisualStyleBackColor = false;
+      this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
       // 
       // MainForm
       // 
@@ -230,6 +262,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button settingsBtn;
+    private System.Windows.Forms.Button loadBtn;
+    private System.Windows.Forms.Button saveBtn;
   }
 }
 

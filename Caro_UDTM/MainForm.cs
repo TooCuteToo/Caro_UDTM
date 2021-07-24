@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Net.Sockets;
@@ -96,6 +97,7 @@ namespace Caro_UDTM
       this.gameType = gameType;
       this.depth = depth;
       this.isPlayerFirst = false;
+
       playerOneNameTxt.Text = "MAY MOT";
       playerTwoNameTxt.Text = "MAY HAI";
 
@@ -210,7 +212,6 @@ namespace Caro_UDTM
       if (aiStartFirst)
       {
         int midMove = GameConstant.ROWS / 2;
-        TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
         playMove(new Point(midMove, midMove));
       }
 
@@ -223,8 +224,6 @@ namespace Caro_UDTM
     {
       int xMove = new Random().Next(GameConstant.ROWS);
       int yMove = new Random().Next(GameConstant.COLS);
-      TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
-      //Button btn = (Button)test.Controls[xMove];
       playMove(new Point(xMove, yMove));
     }
 
@@ -281,6 +280,9 @@ namespace Caro_UDTM
 
     private void clearBoardLayout()
     {
+      caroBoard = new Board();
+      moveStack = new Stack<Button>();
+
       foreach (Button btn in movedBtns)
       {
         btn.Image = null;
@@ -290,18 +292,14 @@ namespace Caro_UDTM
 
       if (gameType == GameMode.OnePlayer)
       {
-        aiStartFirst = !isPlayerFirst;
-        isX = false;
-        isXTurn = false;
-
+        //aiStartFirst = !isPlayerFirst;
         if (isPlayerFirst)
         {
           isX = true;
           isXTurn = true;
           isPlayerTurn = true;
         }
-
-        isPlayerTurn = false;
+        else isPlayerTurn = false;
       }
 
       moveStack = new Stack<Button>();
@@ -309,9 +307,10 @@ namespace Caro_UDTM
 
       if (aiStartFirst)
       {
+        isX = false;
+        isXTurn = false;
+        isPlayerTurn = false;
         int midMove = GameConstant.ROWS / 2;
-        TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
-        Button btn = (Button)test.Controls[midMove];
         playMove(new Point(midMove, midMove));
       }
     }
@@ -387,16 +386,13 @@ namespace Caro_UDTM
         }
       }
 
-      if (gameType == GameMode.OnePlayer && winner == 0)
+      else if (gameType == GameMode.OnePlayer)
       {
-        TableLayoutPanel test = (TableLayoutPanel)mainTablePanel.Controls[2];
         int[] bestMove = GameLogic.calculateNextMove(depth, caroBoard);
         Point point = new Point(bestMove[0], bestMove[1]);
-
         playMove(point);
 
         //Console.WriteLine("Black: " + GameLogic.getScore(caroBoard, true, true) + " White: " + GameLogic.getScore(caroBoard, false, true));
-
         winner = checkWinner();
 
         if (winner == 1)
@@ -447,8 +443,6 @@ namespace Caro_UDTM
         if (result == DialogResult.OK)
         {
           clearBoardLayout();
-          caroBoard = new Board();
-
           return;
         }
 
@@ -484,6 +478,9 @@ namespace Caro_UDTM
     {
       TableLayoutPanel caroPanel = (TableLayoutPanel)mainTablePanel.Controls[2];
       Button btn = (Button)caroPanel.Controls[point.X * GameConstant.ROWS + point.Y];
+
+      if (btn.Image != null) return false;
+
       btn.BackColor = GameConstant.buttonClickColor;
       //Console.WriteLine("O / X: " + GameLogic.evaluateBoardForO(caroBoard, isXTurn).ToString());
       movedBtns.Add(btn);
@@ -494,8 +491,6 @@ namespace Caro_UDTM
       }
 
       moveStack.Push(btn);
-
-      if (btn.Image != null) return false;
 
       if (isX)
       {
@@ -675,11 +670,13 @@ namespace Caro_UDTM
             btn.BackColor = GameConstant.boardColor;
             btn.Click += btn_click;
             Point point = (Point)btn.Tag;
-
             btn.Image = null;
-
             caroBoard.clearMove(point.X, point.Y);
             //caroBoard.printBoard();
+            if (moveStack.Peek() != null)
+            {
+              moveStack.Peek().BackColor = GameConstant.buttonClickColor;
+            }
           }
 
           return;
@@ -697,6 +694,10 @@ namespace Caro_UDTM
           caroBoard.clearMove(point.X, point.Y);
           //caroBoard.printBoard();
           isX = !isX;
+          if (moveStack.Peek() != null)
+          {
+            moveStack.Peek().BackColor = GameConstant.buttonClickColor;
+          }
 
           return;
         }
@@ -708,6 +709,102 @@ namespace Caro_UDTM
     private void settingsBtn_Click(object sender, EventArgs e)
     {
       new SettingForm().ShowDialog();
+    }
+
+    private void loadBtn_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        StreamReader sr = null;
+
+        if (gameType == GameMode.OnePlayer)
+        {
+          if (isPlayerFirst) sr = File.OpenText(GameConstant.savePlayerFirstPath);
+          else if (aiStartFirst) sr = File.OpenText(GameConstant.saveAIFirstPath);
+        }
+        else if (gameType == GameMode.TwoPlayer)
+        {
+          sr = File.OpenText(GameConstant.saveTwoPlayerPath);
+        }
+        else if (gameType == GameMode.ComCom)
+        {
+          sr = File.OpenText(GameConstant.saveComComPath);
+        }
+
+        clearBoardLayout();
+
+        string s;
+        while ((s = sr.ReadLine()) != null)
+        {
+          string[] str = s.Split(' ');
+          int point = int.Parse(str[0]);
+
+          if (str[1] == "X")
+          {
+            isX = true;
+            isXTurn = true;
+          }
+          else
+          {
+            isX = false;
+            isXTurn = false;
+          }
+
+          Point loadPoint = new Point(point / GameConstant.COLS, point % GameConstant.COLS);
+          playMove(loadPoint);
+        }
+      } catch
+      {
+        MessageBox.Show("CANT FIND SAVE!!!");
+        return;
+      }
+    }
+
+    private void saveBtn_Click(object sender, EventArgs e)
+    {
+      if (gameType == GameMode.OnePlayer)
+      {
+        if (isPlayerFirst)
+        {
+          using (StreamWriter sw = File.CreateText(GameConstant.savePlayerFirstPath))
+          {
+            writeToFile(sw);
+          }
+        }
+        else if (aiStartFirst)
+        {
+          using (StreamWriter sw = File.CreateText(GameConstant.saveAIFirstPath))
+          {
+            writeToFile(sw);
+          }
+        }
+      }
+      else if (gameType == GameMode.TwoPlayer)
+      {
+        using (StreamWriter sw = File.CreateText(GameConstant.saveTwoPlayerPath))
+        {
+          writeToFile(sw);
+        }
+      } 
+      else if (gameType == GameMode.ComCom)
+      {
+        using (StreamWriter sw = File.CreateText(GameConstant.saveComComPath))
+        {
+          writeToFile(sw);
+        }
+      }
+
+      MessageBox.Show("YOUR GAME IS SAVED");
+    }
+
+    private void writeToFile(StreamWriter sw)
+    {
+      foreach (Button btn in movedBtns)
+      {
+        Point savePoint = (Point)btn.Tag;
+        if (btn.Image == GameConstant.X_IMG) sw.WriteLine(savePoint.X * GameConstant.COLS + savePoint.Y + " " + "X");
+        if (btn.Image == GameConstant.O_IMG) sw.WriteLine(savePoint.X * GameConstant.COLS + savePoint.Y + " " + "O");
+      }
     }
   }
 }
