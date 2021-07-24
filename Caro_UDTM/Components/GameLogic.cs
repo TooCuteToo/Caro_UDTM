@@ -533,9 +533,11 @@ namespace Caro_UDTM.Components
       switch (consecutive)
       {
         case 5:
-          if (block <= 1) return GameConstant.WIN_SCORE;
-          else return 10;
-          //return GameConstant.WIN_SCORE;
+          if (GameConstant.block2Flag)
+          {
+            if (block <= 1) return GameConstant.WIN_SCORE;
+            else return 10;
+          } else return GameConstant.WIN_SCORE;
 
         case 4:
           if (currentTurn) return winGuarantee;

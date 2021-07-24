@@ -28,6 +28,7 @@ namespace Caro_UDTM.Components
 
     public static bool soundEffectFlag = true;
     public static bool backgroundFlag = true;
+    public static bool block2Flag = true;
 
     public static string soundEffectPath = Application.StartupPath + @"/Resources/sound_effect.wav";
     public static string backgroundMusicPath = Application.StartupPath + @"/Resources/background.wav";

@@ -396,6 +396,7 @@ namespace Caro_UDTM
         else if (winner == 2)
         {
           showWinnerDialog(playerTwoNameTxt.Text);
+          addToLeaderboard(playerTwoNameTxt.Text);
         }
       }
 

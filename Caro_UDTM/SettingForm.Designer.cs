@@ -33,6 +33,8 @@
       this.saveSettingBtn = new System.Windows.Forms.Button();
       this.effectCB = new System.Windows.Forms.CheckBox();
       this.musicCB = new System.Windows.Forms.CheckBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.block2CB = new System.Windows.Forms.CheckBox();
       this.SuspendLayout();
       // 
       // soundEffectSettingTxt
@@ -66,7 +68,7 @@
       this.saveSettingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
       this.saveSettingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.saveSettingBtn.ForeColor = System.Drawing.Color.Black;
-      this.saveSettingBtn.Location = new System.Drawing.Point(54, 117);
+      this.saveSettingBtn.Location = new System.Drawing.Point(54, 147);
       this.saveSettingBtn.Margin = new System.Windows.Forms.Padding(2);
       this.saveSettingBtn.Name = "saveSettingBtn";
       this.saveSettingBtn.Size = new System.Drawing.Size(183, 46);
@@ -93,19 +95,42 @@
       this.musicCB.TabIndex = 5;
       this.musicCB.UseVisualStyleBackColor = true;
       // 
+      // label1
+      // 
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.ForeColor = System.Drawing.Color.White;
+      this.label1.Location = new System.Drawing.Point(50, 98);
+      this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(158, 24);
+      this.label1.TabIndex = 2;
+      this.label1.Text = "BLOCK 2";
+      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // block2CB
+      // 
+      this.block2CB.AutoSize = true;
+      this.block2CB.Location = new System.Drawing.Point(222, 106);
+      this.block2CB.Name = "block2CB";
+      this.block2CB.Size = new System.Drawing.Size(15, 14);
+      this.block2CB.TabIndex = 5;
+      this.block2CB.UseVisualStyleBackColor = true;
+      // 
       // SettingForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-      this.ClientSize = new System.Drawing.Size(295, 184);
+      this.ClientSize = new System.Drawing.Size(295, 204);
+      this.Controls.Add(this.block2CB);
       this.Controls.Add(this.musicCB);
       this.Controls.Add(this.effectCB);
       this.Controls.Add(this.saveSettingBtn);
+      this.Controls.Add(this.label1);
       this.Controls.Add(this.musicSettingTxt);
       this.Controls.Add(this.soundEffectSettingTxt);
-      this.MaximumSize = new System.Drawing.Size(311, 220);
-      this.MinimumSize = new System.Drawing.Size(311, 220);
+      this.MaximumSize = new System.Drawing.Size(311, 240);
+      this.MinimumSize = new System.Drawing.Size(311, 240);
       this.Name = "SettingForm";
       this.Text = "SettingForm";
       this.Load += new System.EventHandler(this.SettingForm_Load);
@@ -121,5 +146,7 @@
     private System.Windows.Forms.Button saveSettingBtn;
     private System.Windows.Forms.CheckBox effectCB;
     private System.Windows.Forms.CheckBox musicCB;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.CheckBox block2CB;
   }
 }

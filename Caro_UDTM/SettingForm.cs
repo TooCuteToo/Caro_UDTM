@@ -23,6 +23,7 @@ namespace Caro_UDTM
     {
       bool soundEffectCheck = effectCB.Checked;
       bool backgroundCheck = musicCB.Checked;
+      bool block2Check = block2CB.Checked;
 
       if (!soundEffectCheck)
       {
@@ -42,6 +43,14 @@ namespace Caro_UDTM
         GameConstant.backgroundMusic.PlayLooping();
       }
 
+      if (!block2Check)
+      {
+        GameConstant.block2Flag = false;
+      } else
+      {
+        GameConstant.block2Flag = true;
+      }
+
       saveSetting();
       Close();
     }
@@ -51,6 +60,7 @@ namespace Caro_UDTM
       if (File.Exists(GameConstant.settingPath)) loadSetting();
       effectCB.Checked = GameConstant.soundEffectFlag;
       musicCB.Checked = GameConstant.backgroundFlag;
+      block2CB.Checked = GameConstant.block2Flag;
     }
 
     private void saveSetting()
@@ -59,6 +69,8 @@ namespace Caro_UDTM
       {
         sw.WriteLine(GameConstant.soundEffectFlag);
         sw.WriteLine(GameConstant.backgroundFlag);
+        sw.WriteLine(GameConstant.block2Flag);
+        sw.Close();
       }
     }
 
@@ -70,7 +82,7 @@ namespace Caro_UDTM
         int i = 0;
         bool[] settings = new bool[]
         {
-          false, false
+          false, false, false
         };
 
         while ((s = sr.ReadLine()) != null)
@@ -85,11 +97,16 @@ namespace Caro_UDTM
           if (j == 0)
           {
             GameConstant.soundEffectFlag = settings[j]; 
-          } else
+          } else if (j == 1)
           {
             GameConstant.backgroundFlag = settings[j];
+          } else
+          {
+            GameConstant.block2Flag = settings[j];
           }
         }
+
+        sr.Close();
       }
     }
   }

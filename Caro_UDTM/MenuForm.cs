@@ -49,7 +49,7 @@ namespace Caro_UDTM
         int i = 0;
         bool[] settings = new bool[]
         {
-          false, false
+          false, false, false
         };
 
         while ((s = sr.ReadLine()) != null)
@@ -65,9 +65,12 @@ namespace Caro_UDTM
           {
             GameConstant.soundEffectFlag = settings[j];
           }
-          else
+          else if (j == 1)
           {
             GameConstant.backgroundFlag = settings[j];
+          } else
+          {
+            GameConstant.block2Flag = settings[j];
           }
         }
       }
