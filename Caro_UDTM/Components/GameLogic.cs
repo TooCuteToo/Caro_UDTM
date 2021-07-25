@@ -121,6 +121,7 @@ namespace Caro_UDTM.Components
       else
       {
         bestMove = minimax(depth, caroBoard, true, -1.0, GameConstant.WIN_SCORE);
+        //System.Console.WriteLine("MAX BEST ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
 
         if (bestMove[1] == null) nextMove = null;
         else
@@ -146,6 +147,7 @@ namespace Caro_UDTM.Components
       if (depth == 0)
       {
         Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
+        //System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
         return move;
       }
 
@@ -154,6 +156,7 @@ namespace Caro_UDTM.Components
       if (posibleMoveList.Count == 0)
       {
         Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
+        //System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
         return move;
       }
 
@@ -162,7 +165,7 @@ namespace Caro_UDTM.Components
       if (max)
       {
         bestMove[0] = -1.0;
-
+      
         foreach (int[] move in posibleMoveList)
         {
           //Board caroBoard = new Board(caroBoard);
@@ -175,11 +178,13 @@ namespace Caro_UDTM.Components
 
           if ((Double)(tempMove[0]) > alpha)
           {
+            //System.Console.WriteLine("ALPHA: {0}", tempMove[0]);
             alpha = (Double)(tempMove[0]);
           }
 
           if ((Double)(tempMove[0]) >= beta)
           {
+            //System.Console.WriteLine("MAX ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
             return tempMove;
           }
 
@@ -188,7 +193,10 @@ namespace Caro_UDTM.Components
             bestMove = tempMove;
             bestMove[1] = move[0];
             bestMove[2] = move[1];
+
+            //System.Console.WriteLine("MAX ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
           }
+
         }
       }
       else
@@ -210,11 +218,13 @@ namespace Caro_UDTM.Components
 
           if (((Double)tempMove[0]) < beta)
           {
+            //System.Console.WriteLine("BETA: {0}", tempMove[0]);
             beta = (Double)(tempMove[0]);
           }
 
           if ((Double)(tempMove[0]) <= alpha)
           {
+            //System.Console.WriteLine("MIN ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
             return tempMove;
           }
 
@@ -223,6 +233,8 @@ namespace Caro_UDTM.Components
             bestMove = tempMove;
             bestMove[1] = move[0];
             bestMove[2] = move[1];
+
+            //System.Console.WriteLine("MIN ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
           }
         }
       }
@@ -528,16 +540,24 @@ namespace Caro_UDTM.Components
     {
       const int winGuarantee = 1000000;
 
-      if (block == 2 && consecutive < 5) return 0;
+      if (GameConstant.block2Flag)
+      {
+        if (block == 2 && consecutive <= 5) return 0; 
+      }
+      else
+      {
+        if (block == 2 && consecutive < 5) return 0;
+      }
 
       switch (consecutive)
       {
         case 5:
-          if (GameConstant.block2Flag)
-          {
-            if (block <= 1) return GameConstant.WIN_SCORE;
-            else return 10;
-          } else return GameConstant.WIN_SCORE;
+          //if (GameConstant.block2Flag)
+          //{
+          //  if (block <= 1) return GameConstant.WIN_SCORE;
+          //  else return 10;
+          //} else return GameConstant.WIN_SCORE;
+          return GameConstant.WIN_SCORE;
 
         case 4:
           if (currentTurn) return winGuarantee;
