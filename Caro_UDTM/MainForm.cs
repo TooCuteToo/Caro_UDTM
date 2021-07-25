@@ -105,6 +105,8 @@ namespace Caro_UDTM
       playerOneNameTxt.Text = "MAY MOT";
       playerTwoNameTxt.Text = "MAY HAI";
       initTitleLB();
+      saveBtn.Enabled = false;
+      loadBtn.Enabled = false;
 
       aiStartFirst = !isPlayerFirst;
       isX = false;

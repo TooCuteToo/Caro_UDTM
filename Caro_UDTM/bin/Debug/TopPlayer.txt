@@ -1,5 +1,5 @@
 TU - 110
-BAO - 250
+BAO - 270
 TIEN - 20
 THANH - 10
 PHU - 20

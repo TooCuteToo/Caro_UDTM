@@ -34,15 +34,15 @@
       this.saveBtn = new System.Windows.Forms.Button();
       this.settingsBtn = new System.Windows.Forms.Button();
       this.button1 = new System.Windows.Forms.Button();
+      this.playerOneScoreTxt = new System.Windows.Forms.Label();
       this.playerOneTitleLB = new System.Windows.Forms.Label();
       this.playerOneNameTxt = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.playerTwoScoreTxt = new System.Windows.Forms.Label();
       this.playerTwoTitleLB = new System.Windows.Forms.Label();
       this.playerTwoNameTxt = new System.Windows.Forms.Label();
       this.pictureBox2 = new System.Windows.Forms.PictureBox();
-      this.playerOneScoreTxt = new System.Windows.Forms.Label();
-      this.playerTwoScoreTxt = new System.Windows.Forms.Label();
       this.mainTablePanel.SuspendLayout();
       this.panel2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,7 +91,7 @@
       this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.loadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.loadBtn.ForeColor = System.Drawing.Color.Black;
-      this.loadBtn.Location = new System.Drawing.Point(54, 450);
+      this.loadBtn.Location = new System.Drawing.Point(54, 435);
       this.loadBtn.Margin = new System.Windows.Forms.Padding(2);
       this.loadBtn.Name = "loadBtn";
       this.loadBtn.Size = new System.Drawing.Size(114, 37);
@@ -105,7 +105,7 @@
       this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.saveBtn.ForeColor = System.Drawing.Color.Black;
-      this.saveBtn.Location = new System.Drawing.Point(54, 328);
+      this.saveBtn.Location = new System.Drawing.Point(54, 379);
       this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
       this.saveBtn.Name = "saveBtn";
       this.saveBtn.Size = new System.Drawing.Size(114, 37);
@@ -119,7 +119,7 @@
       this.settingsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
       this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.settingsBtn.ForeColor = System.Drawing.Color.Black;
-      this.settingsBtn.Location = new System.Drawing.Point(54, 389);
+      this.settingsBtn.Location = new System.Drawing.Point(54, 323);
       this.settingsBtn.Margin = new System.Windows.Forms.Padding(2);
       this.settingsBtn.Name = "settingsBtn";
       this.settingsBtn.Size = new System.Drawing.Size(114, 37);
@@ -141,6 +141,19 @@
       this.button1.Text = "UNDO";
       this.button1.UseVisualStyleBackColor = false;
       this.button1.Click += new System.EventHandler(this.button1_Click_1);
+      // 
+      // playerOneScoreTxt
+      // 
+      this.playerOneScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerOneScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerOneScoreTxt.ForeColor = System.Drawing.Color.White;
+      this.playerOneScoreTxt.Location = new System.Drawing.Point(2, 229);
+      this.playerOneScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerOneScoreTxt.Name = "playerOneScoreTxt";
+      this.playerOneScoreTxt.Size = new System.Drawing.Size(217, 20);
+      this.playerOneScoreTxt.TabIndex = 2;
+      this.playerOneScoreTxt.Text = "0";
+      this.playerOneScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // playerOneTitleLB
       // 
@@ -193,6 +206,19 @@
       this.panel1.Size = new System.Drawing.Size(222, 615);
       this.panel1.TabIndex = 2;
       // 
+      // playerTwoScoreTxt
+      // 
+      this.playerTwoScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.playerTwoScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.playerTwoScoreTxt.ForeColor = System.Drawing.Color.White;
+      this.playerTwoScoreTxt.Location = new System.Drawing.Point(4, 229);
+      this.playerTwoScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+      this.playerTwoScoreTxt.Name = "playerTwoScoreTxt";
+      this.playerTwoScoreTxt.Size = new System.Drawing.Size(220, 20);
+      this.playerTwoScoreTxt.TabIndex = 5;
+      this.playerTwoScoreTxt.Text = "0";
+      this.playerTwoScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
       // playerTwoTitleLB
       // 
       this.playerTwoTitleLB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -230,32 +256,6 @@
       this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       this.pictureBox2.TabIndex = 3;
       this.pictureBox2.TabStop = false;
-      // 
-      // playerOneScoreTxt
-      // 
-      this.playerOneScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.playerOneScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.playerOneScoreTxt.ForeColor = System.Drawing.Color.White;
-      this.playerOneScoreTxt.Location = new System.Drawing.Point(2, 229);
-      this.playerOneScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.playerOneScoreTxt.Name = "playerOneScoreTxt";
-      this.playerOneScoreTxt.Size = new System.Drawing.Size(217, 20);
-      this.playerOneScoreTxt.TabIndex = 2;
-      this.playerOneScoreTxt.Text = "0";
-      this.playerOneScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // playerTwoScoreTxt
-      // 
-      this.playerTwoScoreTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.playerTwoScoreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.playerTwoScoreTxt.ForeColor = System.Drawing.Color.White;
-      this.playerTwoScoreTxt.Location = new System.Drawing.Point(4, 229);
-      this.playerTwoScoreTxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-      this.playerTwoScoreTxt.Name = "playerTwoScoreTxt";
-      this.playerTwoScoreTxt.Size = new System.Drawing.Size(220, 20);
-      this.playerTwoScoreTxt.TabIndex = 5;
-      this.playerTwoScoreTxt.Text = "0";
-      this.playerTwoScoreTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // MainForm
       // 

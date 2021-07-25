@@ -27,10 +27,14 @@ namespace Caro_UDTM.Components
         {
           if (board[i, j] > 0) continue;
 
+          // Kiểm tra viền ngang phía trên
           if (i > 0)
           {
+            // Kiểm tra viền dọc bên trái
             if (j > 0)
             {
+              // Đương chéo trái phía trên
+              // Đường ngang bên trái
               if (board[i - 1, j - 1] > 0 || board[i, j - 1] > 0)
               {
                 int[] move = { i, j };
@@ -39,8 +43,11 @@ namespace Caro_UDTM.Components
               }
             }
 
+            // Kiểm tra viền dọc bên phải
             if (j < n - 1)
             {
+              // Đường chéo phải phía trên
+              // Đường ngang bên phải
               if (board[i - 1, j + 1] > 0 || board[i, j + 1] > 0)
               {
                 int[] move = { i, j };
@@ -49,7 +56,7 @@ namespace Caro_UDTM.Components
               }
             }
 
-
+            // Đường dọc phía trên
             if (board[i - 1, j] > 0)
             {
               int[] move = { i, j };
@@ -58,10 +65,14 @@ namespace Caro_UDTM.Components
             }
           }
 
+          // Kiểm tra viền ngang phía dưới
           if (i < n - 1)
           {
+            // Kiểm tra viền dọc bên trái
             if (j > 0)
             {
+              // Đường chéo phải phía dưới
+              // Đường ngang bên trái
               if (board[i + 1, j - 1] > 0 || board[i, j - 1] > 0)
               {
                 int[] move = { i, j };
@@ -70,8 +81,11 @@ namespace Caro_UDTM.Components
               }
             }
 
+            // Kiểm tra viền dọc bên phải
             if (j < n - 1)
             {
+              // Đường chéo trái phía dưới
+              // Đường ngang bên phải
               if (board[i + 1, j + 1] > 0 || board[i, j + 1] > 0)
               {
                 int[] move = { i, j };
@@ -80,6 +94,7 @@ namespace Caro_UDTM.Components
               }
             }
 
+            // Đường dọc phía dưới
             if (board[i + 1, j] > 0)
             {
               int[] move = { i, j };
@@ -90,13 +105,6 @@ namespace Caro_UDTM.Components
 
         }
       }
-
-
-      //for (int i = 0; i < posibleMoveList.Count; ++i)
-      //{
-      //    Console.WriteLine(posibleMoveList[i][0] + " " + posibleMoveList[i][1]);
-      //}
-
 
       return posibleMoveList;
     }
@@ -147,7 +155,7 @@ namespace Caro_UDTM.Components
       if (depth == 0)
       {
         Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
-        //System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
+        System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
         return move;
       }
 
@@ -156,7 +164,7 @@ namespace Caro_UDTM.Components
       if (posibleMoveList.Count == 0)
       {
         Object[] move = { evaluateBoardForO(caroBoard, !max), null, null };
-        //System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
+        System.Console.WriteLine("DEPTH: {0} -- SCORE: {1}", depth, move[0]);
         return move;
       }
 
@@ -178,13 +186,13 @@ namespace Caro_UDTM.Components
 
           if ((Double)(tempMove[0]) > alpha)
           {
-            //System.Console.WriteLine("ALPHA: {0}", tempMove[0]);
+            System.Console.WriteLine("ALPHA: {0}", tempMove[0]);
             alpha = (Double)(tempMove[0]);
           }
 
           if ((Double)(tempMove[0]) >= beta)
           {
-            //System.Console.WriteLine("MAX ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
+            System.Console.WriteLine("MAX ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
             return tempMove;
           }
 
@@ -194,7 +202,7 @@ namespace Caro_UDTM.Components
             bestMove[1] = move[0];
             bestMove[2] = move[1];
 
-            //System.Console.WriteLine("MAX ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
+            System.Console.WriteLine("MAX ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
           }
 
         }
@@ -202,9 +210,6 @@ namespace Caro_UDTM.Components
       else
       {
         bestMove[0] = 100000000.0;
-        //bestMove[1] = posibleMoveList[0][0];
-        //bestMove[2] = posibleMoveList[0][1];
-        //bestMove[1] = (int[,])posibleMoveList[0][0];
 
         foreach (int[] move in posibleMoveList)
         {
@@ -218,13 +223,13 @@ namespace Caro_UDTM.Components
 
           if (((Double)tempMove[0]) < beta)
           {
-            //System.Console.WriteLine("BETA: {0}", tempMove[0]);
+            System.Console.WriteLine("BETA: {0}", tempMove[0]);
             beta = (Double)(tempMove[0]);
           }
 
           if ((Double)(tempMove[0]) <= alpha)
           {
-            //System.Console.WriteLine("MIN ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
+            System.Console.WriteLine("MIN ----- ALPHA: {0} -- BETA: {1}", tempMove[0], beta);
             return tempMove;
           }
 
@@ -234,7 +239,7 @@ namespace Caro_UDTM.Components
             bestMove[1] = move[0];
             bestMove[2] = move[1];
 
-            //System.Console.WriteLine("MIN ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
+            System.Console.WriteLine("MIN ----- SCORE: {0} -- DEPTH: {1}", bestMove[0], depth);
           }
         }
       }
@@ -432,7 +437,7 @@ namespace Caro_UDTM.Components
       int consecutive = 0;
       int blocks = 2;
       int score = 0;
-      // From bottom-left to top-right diagonally
+      // Đánh giá đường chéo bên phải
       for (int k = 0; k <= 2 * (GameConstant.ROWS - 1); k++)
       {
         int iStart = Math.Max(0, k - GameConstant.ROWS + 1);
@@ -480,7 +485,7 @@ namespace Caro_UDTM.Components
         consecutive = 0;
         blocks = 2;
       }
-      // From top-left to bottom-right diagonally
+      // Đánh giá đường chéo bên trái
       for (int k = 1 - GameConstant.ROWS; k < GameConstant.ROWS; k++)
       {
         int iStart = Math.Max(0, k);
